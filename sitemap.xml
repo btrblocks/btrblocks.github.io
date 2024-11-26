@@ -2,47 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/blog/firstpost/</loc>
+		<loc>https://btrblocks.com/blog/firstpost/</loc>
 		<lastmod>2018-05-01</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/blog/secondpost/</loc>
+		<loc>https://btrblocks.com/blog/secondpost/</loc>
 		<lastmod>2018-07-04</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/blog/thirdpost/</loc>
+		<loc>https://btrblocks.com/blog/thirdpost/</loc>
 		<lastmod>2018-08-24</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/blog/fourthpost/</loc>
+		<loc>https://btrblocks.com/blog/fourthpost/</loc>
 		<lastmod>2018-09-30</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/about/</loc>
+		<loc>https://btrblocks.com/about/</loc>
 		<lastmod>2024-11-26</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/blog/</loc>
+		<loc>https://btrblocks.com/blog/</loc>
 		<lastmod>2024-11-26</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/</loc>
+		<loc>https://btrblocks.com/</loc>
 		<lastmod>2024-11-26</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/tags/</loc>
+		<loc>https://btrblocks.com/tags/</loc>
 		<lastmod>2024-11-26</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/eleventy-base-blog/feed/feed.xml</loc>
+		<loc>https://btrblocks.com/feed/feed.xml</loc>
 		<lastmod>2024-11-26</lastmod>
 	</url>
 </urlset>
