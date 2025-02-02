@@ -19,7 +19,8 @@ export default async function(eleventyConfig) {
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig
 		.addPassthroughCopy({
-			"./public/": "/"
+			"./public/": "/",
+			"./public/icon": "/"
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
@@ -64,7 +65,7 @@ export default async function(eleventyConfig) {
 		metadata: {
 			language: "en",
 			title: "BtrBlocks Blog",
-			subtitle: "BtrBlocks is there to build the future cloud infrastructure.",
+			subtitle: "BtrBlocks is building the future cloud infrastructure.",
 			base: "https://btrblocks.github.io/",
 			author: {
 				name: "Admin"
