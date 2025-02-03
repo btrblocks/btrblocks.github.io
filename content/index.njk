@@ -14,7 +14,12 @@ Building a cloud infrastructure for the future.
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 {% if latestPostsCount > 0 %}
-	<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
+    {% if latestPostsCount > 1 %}
+    	{# <h2>Latest {{ latestPostsCount }} Posts</h2> #}
+    	<h2>Latest Posts</h2>
+    {% else %}
+    	<h2>Latest Post</h2>
+    {% endif %}
 
 	{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
 	{% set postslistCounter = postsCount %}

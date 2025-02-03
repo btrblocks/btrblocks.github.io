@@ -22,7 +22,7 @@
 		#}
 
 		{#- Add an arbitrary string to the bundle #}
-		{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
+		{# {%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %} #}
 		{#- Add the contents of a file to the bundle #}
 		{%- css %}{% include "public/css/index.css" %}{% endcss %}
 		{#- Or you can add from node_modules #}
@@ -62,6 +62,7 @@
 		</main>
 
 		<footer>
+			<p><a href="/feed/feed.xml">RSS Feed</a><p>
 			{# <p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p> #}
 		</footer>
 

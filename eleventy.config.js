@@ -55,6 +55,7 @@ export default async function(eleventyConfig) {
 		templateData: {
 			eleventyNavigation: {
 				key: "Feed",
+                hide: true,
 				order: 4
 			}
 		},
@@ -64,11 +65,11 @@ export default async function(eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "BtrBlocks Blog",
+			title: "BtrBlocks",
 			subtitle: "BtrBlocks is building the future cloud infrastructure.",
 			base: "https://btrblocks.github.io/",
 			author: {
-				name: "Admin"
+				name: "BtrBlocks Team"
 			}
 		}
 	});

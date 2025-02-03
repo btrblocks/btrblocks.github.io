@@ -1,0 +1,38 @@
+/* Tags list */
+.post-metadata {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-metadata time {
+    margin-right: 1em;
+}
+
+.post-metadata authorlist {
+    display: block;
+}
+
+
+.links-nextprev {
+    display: flex;
+    justify-content: space-between;
+    gap: .5em 1em;
+    list-style: "";
+    border-top: 1px dashed var(--color-gray-20);
+    padding: 1em 0 0 0;
+}
+.links-nextprev > * {
+    flex-grow: 1;
+}
+.links-nextprev-next {
+    text-align: right;
+}
+
+.links-viewall {
+	display: flex;
+	justify-content: center;
+}

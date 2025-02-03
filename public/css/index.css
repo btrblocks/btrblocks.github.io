@@ -22,6 +22,7 @@
 	--default-font: var(--font-family-monospace);
 }
 
+
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
@@ -109,8 +110,7 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main,
-footer {
+main {
 	padding: 1rem;
 }
 main :first-child {
@@ -119,26 +119,18 @@ main :first-child {
 
 header {
 	border-bottom: 1px dashed var(--color-gray-20);
+	margin-bottom: 1em;
 }
-header:after {
+header:after, main:after {
 	content: "";
 	display: table;
 	clear: both;
 }
 
-.links-nextprev {
+footer {
 	display: flex;
-	justify-content: space-between;
-	gap: .5em 1em;
-	list-style: "";
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
-}
-.links-nextprev > * {
-	flex-grow: 1;
-}
-.links-nextprev-next {
-	text-align: right;
+	justify-content: center;
+	/*border-top: 1px dashed var(--color-gray-20);*/
 }
 
 table {
@@ -262,17 +254,3 @@ header {
 .postlist-item > .post-tag {
 	align-self: center;
 }
-
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: .5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.post-metadata time {
-	margin-right: 1em;
-}
-
