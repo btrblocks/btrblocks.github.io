@@ -25,7 +25,6 @@
 }
 
 
-/*
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
@@ -35,15 +34,15 @@
 		--separator-color: var(--color-gray-90);
 
 		/* --text-color is assigned to --color-gray-_ above */
-	    --text-color: var(--color-gray-90);
-	    --text-color-faded: var(--color-gray-20);
+	    --text-color: #eaeaea;
+	    --text-color-faded: var(--color-gray-50);
 		--text-color-link: #1493fb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
 
 		--background-color: #121517;
 	}
-}*/
+}
 
 
 /* Global stylesheet */
