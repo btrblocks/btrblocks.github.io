@@ -9,6 +9,10 @@
     color: var(--text-color-faded);
 }
 
+.post-metadata {
+   margin-bottom: 1em;
+}
+
 .post-metadata li + li:before {
     content: "•";
     margin-left: 1em;

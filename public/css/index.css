@@ -24,7 +24,6 @@
 	--default-font: var(--font-family-monospace);
 }
 
-
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
