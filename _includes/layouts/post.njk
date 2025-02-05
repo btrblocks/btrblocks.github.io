@@ -7,16 +7,22 @@ layout: layouts/base.njk
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 
 <h1>{{ title }}</h1>
-{%if author %}<span class="authorlist">Written by {{ author | readableList }}</span>{% endif %}
 <ul class="post-metadata">
 	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
+    {%if author %}
+      <li><span class="authorlist">{{ author | readableList }}</span></li>
+    {% endif %}
 </ul>
 
 {{ content | safe }}
+
+<ul class="post-taglist">
+    <li>Tags:&nbsp;&nbsp;</li>
+	{%- for tag in tags | filterTagList %}
+	  {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	  <li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %},&hairsp;{% endif %}</li>
+	{%- endfor %}
+</ul>
 
 {%- if collections.posts %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
