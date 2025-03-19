@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://btrblocks.com/about/</loc>
-		<lastmod>2024-11-26</lastmod>
+		<loc>https://btrblocks.com/blog/</loc>
+		<lastmod>2025-03-19</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://btrblocks.com/blog/</loc>
-		<lastmod>2024-11-26</lastmod>
+		<loc>https://btrblocks.com/blog/helloworld/</loc>
+		<lastmod>2025-03-19</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://btrblocks.com/</loc>
-		<lastmod>2024-11-26</lastmod>
+		<lastmod>2025-03-19</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://btrblocks.com/tags/</loc>
-		<lastmod>2024-11-26</lastmod>
+		<lastmod>2025-03-19</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://btrblocks.com/feed/feed.xml</loc>
-		<lastmod>2024-11-26</lastmod>
+		<lastmod>2025-03-19</lastmod>
 	</url>
 </urlset>

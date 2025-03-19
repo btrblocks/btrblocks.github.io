@@ -1,7 +1,8 @@
 /* Defaults */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: "JetBrains Mono", Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
 }
 
 /* Theme colors */
@@ -11,13 +12,16 @@
 	--color-gray-90: #333;
 
 	--background-color: #fff;
+	--separator-color: var(--color-gray-20);
 
-	--text-color: var(--color-gray-90);
+	--text-color: var(#0f172a);
+	--text-color-faded: #64748b;
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
 	--syntax-tab-size: 2;
+	--default-font: var(--font-family-monospace);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,12 +30,16 @@
 		--color-gray-50: #C0C0C0;
 		--color-gray-90: #dad8d8;
 
+		--separator-color: var(--color-gray-90);
+
 		/* --text-color is assigned to --color-gray-_ above */
+	    --text-color: #eaeaea;
+	    --text-color-faded: var(--color-gray-50);
 		--text-color-link: #1493fb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
 
-		--background-color: #15202b;
+		--background-color: #121517;
 	}
 }
 
@@ -49,7 +57,7 @@ html,
 body {
 	padding: 0;
 	margin: 0 auto;
-	font-family: var(--font-family);
+	font-family: var(--default-font);
 	color: var(--text-color);
 	background-color: var(--background-color);
 }
@@ -58,6 +66,7 @@ html {
 }
 body {
 	max-width: 40em;
+	font-family: var(--default-font);
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -106,36 +115,27 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main,
-footer {
+main {
 	padding: 1rem;
 }
 main :first-child {
 	margin-top: 0;
 }
 
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
+main, header {
+	border-bottom: 1px dashed var(--separator-color);
+	margin-bottom: 1em;
 }
-header:after {
+header:after, main:after {
 	content: "";
 	display: table;
 	clear: both;
 }
 
-.links-nextprev {
+footer {
 	display: flex;
-	justify-content: space-between;
-	gap: .5em 1em;
-	list-style: "";
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
-}
-.links-nextprev > * {
-	flex-grow: 1;
-}
-.links-nextprev-next {
-	text-align: right;
+	justify-content: center;
+	/*border-top: 1px dashed var(--color-gray-20);*/
 }
 
 table {
@@ -259,17 +259,3 @@ header {
 .postlist-item > .post-tag {
 	align-self: center;
 }
-
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: .5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.post-metadata time {
-	margin-right: 1em;
-}
-
