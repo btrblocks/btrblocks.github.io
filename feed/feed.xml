@@ -5,25 +5,9 @@
   <subtitle>BtrBlocks is building the future cloud infrastructure.</subtitle>
   <link href="https://btrblocks.github.io/feed/feed.xml" rel="self" />
   <link href="https://btrblocks.github.io/" />
-  <updated>2025-03-19T15:10:05Z</updated>
+  <updated>2025-03-19T15:11:21Z</updated>
   <id>https://btrblocks.github.io/</id>
   <author>
     <name>BtrBlocks Team</name>
   </author>
-  <entry>
-    <title>Why we need a log</title>
-    <link href="https://btrblocks.github.io/blog/helloworld/" />
-    <updated>2025-03-19T15:10:05Z</updated>
-    <id>https://btrblocks.github.io/blog/helloworld/</id>
-    <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;Coming to a cloud &lt;em&gt;near&lt;/em&gt; &lt;strong&gt;you&lt;/strong&gt;.&lt;/p&gt;
-&lt;pre class=&quot;language-cpp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token keyword&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; std&lt;span class=&quot;token double-colon punctuation&quot;&gt;::&lt;/span&gt;string&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; message&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-      std&lt;span class=&quot;token double-colon punctuation&quot;&gt;::&lt;/span&gt;cout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; message &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span class=&quot;token double-colon punctuation&quot;&gt;::&lt;/span&gt;endl&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;subheading&quot;&gt;Subheading&lt;/h3&gt;
-&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://btrblocks.github.io/blog/helloworld/uAlNHtviPu-400.avif 400w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://btrblocks.github.io/blog/helloworld/uAlNHtviPu-400.webp 400w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://btrblocks.github.io/blog/helloworld/uAlNHtviPu-400.png&quot; alt=&quot;btrblocks logo&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
-</content>
-  </entry>
 </feed>
