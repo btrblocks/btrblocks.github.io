@@ -3,10 +3,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>BtrBlocks</title>
   <subtitle>BtrBlocks is building the future cloud infrastructure.</subtitle>
-  <link href="https://btrblocks.github.io/feed/feed.xml" rel="self" />
-  <link href="https://btrblocks.github.io/" />
-  <updated>2025-03-19T15:11:21Z</updated>
-  <id>https://btrblocks.github.io/</id>
+  <link href="https://btrblocks.com/feed/feed.xml" rel="self" />
+  <link href="https://btrblocks.com/" />
+  <updated>2025-04-02T08:04:07Z</updated>
+  <id>https://btrblocks.com/</id>
   <author>
     <name>BtrBlocks Team</name>
   </author>
