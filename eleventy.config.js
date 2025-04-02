@@ -67,7 +67,7 @@ export default async function(eleventyConfig) {
 			language: "en",
 			title: "BtrBlocks",
 			subtitle: "BtrBlocks is building the future cloud infrastructure.",
-			base: "https://btrblocks.github.io/",
+			base: "https://btrblocks.com",
 			author: {
 				name: "BtrBlocks Team"
 			}
