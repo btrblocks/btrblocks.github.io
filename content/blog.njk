@@ -1,10 +1,12 @@
----js
-const eleventyNavigation = {
-	key: "Blog",
-	hide: true,
-	order: 2
-};
 ---
+layout: layouts/blog.njk
+title: Blog
+permalink: /blog/
+eleventyNavigation:
+  key: Blog
+  order: 2
+---
+
 <h1>Blog</h1>
 
 {% set postslist = collections.posts %}

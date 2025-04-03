@@ -11,6 +11,7 @@ const numberOfLatestPostsToShow = 3;
 <h1>BtrBlocks</h1>
 Building a cloud infrastructure for the future. Coming soon.
 
+
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 {% if latestPostsCount > 0 %}
