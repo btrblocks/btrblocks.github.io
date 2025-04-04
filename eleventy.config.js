@@ -3,6 +3,7 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import svgContents from "eleventy-plugin-svg-contents"
 
 import pluginFilters from "./_config/filters.js";
 
@@ -83,7 +84,8 @@ export default async function(eleventyConfig) {
 		extensions: "html",
 
 		// Output formats for each image.
-		formats: ["avif", "webp", "auto"],
+		formats: ["avif", "webp", "auto", "svg"],
+        svgShortCircuit: true,
 
 		// widths: ["auto"],
 
@@ -93,6 +95,8 @@ export default async function(eleventyConfig) {
 			decoding: "async",
 		}
 	});
+    // embed svgs directly
+    eleventyConfig.addPlugin(svgContents);
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);

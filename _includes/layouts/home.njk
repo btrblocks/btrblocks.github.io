@@ -26,7 +26,7 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
+
         .hero {
             display: flex;
             flex-direction: column;
@@ -66,10 +66,10 @@
         }
         
         .logo-img {
-            height: 1.8rem;
+            height: 2.2rem;
             margin-right: 0.5rem;
         }
-        
+
         .slogan {
             font-size: 2rem;
             font-weight: 600;
@@ -233,7 +233,8 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="logo.svg" alt="BtrBlocks Logo" height="2em" class="logo-img">
+                {%- from 'img/logo.svg' import logo %}
+                {{ logo({ class: 'logo-img' }) }}
                 BtrBlocks
             </div>
         </div>
