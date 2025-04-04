@@ -4,7 +4,7 @@ body {
 
 header {
     color: white;
-    padding: 1.5rem 0;
+    padding: 2.0rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -31,7 +31,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 204, 255, 0.05));
+    background: var(--accent-gradient);
     z-index: 1;
 }
 
@@ -46,7 +46,6 @@ header {
 .logo {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
     color: var(--primary);
     display: flex;
     align-items: center;
@@ -91,7 +90,7 @@ header {
 
 .principle-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--large-dropshadow);
     border-color: var(--primary);
 }
 

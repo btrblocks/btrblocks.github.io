@@ -24,6 +24,9 @@
 	--primary: #0066FF;
 	--secondary: #00CCFF;
 	--accent: #FF6600;
+	--accent-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+
+	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
 	--syntax-tab-size: 2;
 	--default-font: var(--font-family);
@@ -49,6 +52,9 @@
 		--primary: #0066FF;
 		--secondary: #00CCFF;
 		--accent: #FF6600;
+		--accent-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+
+		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 	}
 }
 
