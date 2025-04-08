@@ -91,11 +91,11 @@ header {
 .principle-box:hover {
     transform: translateY(-5px);
     box-shadow: var(--large-dropshadow);
-    border-color: var(--primary);
+    border-color: var(--secondary);
 }
 
 .principle-box h3 {
-    color: var(--primary);
+    color: var(--secondary);
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -154,8 +154,8 @@ header {
     background-color: var(--code-bg);
     padding: 4rem 0;
     text-align: center;
-    border-top: 1px solid var(--color-gray-20);
-    border-bottom: 1px solid var(--color-gray-20);
+    border-top: 1px solid var(--separator-color);
+    border-bottom: 1px solid var(--separator-color);
 }
 
 .mission h2 {
