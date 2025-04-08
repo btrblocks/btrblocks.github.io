@@ -13,8 +13,13 @@ eleventyNavigation:
           Cloud apps are currently built on legacy tech and locked in hyperscalers' silos.
           BtrBlocks solves this by building foundational cloud-independent infrastructure services.
         </p>
-        <form class="subscribe-form">
-            <input type="email" placeholder="you@example.com" required>
+          <form
+            action="https://buttondown.com/api/emails/embed-subscribe/btrblocks"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')"
+            class="subscribe-form" >
+            <input type="email" name="email" placeholder="you@example.com" required>
             <button type="submit" class="subscribe-btn">Subscribe</button>
         </form>
     </div>
