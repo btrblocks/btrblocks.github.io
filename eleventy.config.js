@@ -4,6 +4,7 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import svgContents from "eleventy-plugin-svg-contents"
+import faviconPlugin from "eleventy-favicon"
 
 import pluginFilters from "./_config/filters.js";
 
@@ -21,7 +22,7 @@ export default async function(eleventyConfig) {
 	eleventyConfig
 		.addPassthroughCopy({
 			"./public/": "/",
-			"./public/icon": "/"
+			// "./public/icon": "/"
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
@@ -97,6 +98,8 @@ export default async function(eleventyConfig) {
 	});
     // embed svgs directly
     eleventyConfig.addPlugin(svgContents);
+    // generate favicons automatically from our logo svg
+    eleventyConfig.addPlugin(faviconPlugin);
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);

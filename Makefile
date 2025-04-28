@@ -36,6 +36,11 @@ serve: install
 # Force reinstall (clean and install)
 reinstall: clean install
 
-# Phony targets
-.PHONY: install clean build serve reinstall
+public/icon/favicon.ico: content/btrblocks.svg
+	convert -density 300 -define icon:auto-resize=256,128,96,64,48,32,16 \
+			-background none $< $@
 
+favicon: public/icon/favicon.ico
+
+# Phony targets
+.PHONY: install clean build serve reinstall favicon

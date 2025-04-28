@@ -1,10 +1,13 @@
+html {
+}
+
 body {
     line-height: 1.6;
 }
 
 header {
     color: white;
-    padding: 2.0rem 0;
+    padding: 3.0rem 0 1.5rem 0;
     border-bottom: none;
 }
 
@@ -19,7 +22,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 0;
+    padding: 0 0;
     position: relative;
     overflow: hidden;
 }
@@ -31,7 +34,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--accent-gradient);
+    background: var(--background-color);
     z-index: 1;
 }
 
@@ -46,14 +49,18 @@ header {
 .logo {
     font-size: 2.8rem;
     font-weight: 700;
+    font-family: var(--font-family-monospace);
     color: var(--text-color);
     display: flex;
     align-items: center;
 }
 
 .logo-img {
-    height: 2.2rem;
-    margin-right: 0.5rem;
+    height: 3.2rem;
+}
+
+.logo-text {
+    padding-top: 0.12rem;
 }
 
 .slogan {
@@ -111,7 +118,8 @@ header {
 
 .subscribe-form {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
     max-width: 500px;
     justify-content: center;
@@ -123,7 +131,7 @@ header {
     border: 1px solid var(--color-gray-20);
     background-color: white;
     color: black;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-family-monospace);
     border-radius: 4px 0 0 4px;
 }
 
@@ -136,12 +144,12 @@ header {
 }
 
 .subscribe-btn {
-    background-color: var(--primary);
+    background: var(--primary);
     color: var(--text-color);
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 0 4px 4px 0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-family-monospace);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -172,7 +180,7 @@ header {
 
 .code-comment {
     color: #6A9955;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-family-monospace);
     display: block;
     margin-bottom: 1rem;
     text-align: left;

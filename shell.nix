@@ -6,5 +6,6 @@ mkShell {
   buildInputs = [
     nodejs_20
     gnumake
+    imagemagick
   ];
 }

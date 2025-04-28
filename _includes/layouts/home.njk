@@ -9,16 +9,18 @@
     {%- css %}{% include "public/css/base.css" %}{% endcss %}
     {%- css %}{% include "public/css/home.css" %}{% endcss %}
     <style>{% getBundle "css" %}</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     {# The layout includes the header and the footer. Content itself is provided by whatever page uses this layout #}
 
-
     <header>
         <div class="container">
-            <div class="logo">
+            <div class="logo logo-svg">
                 {%- from 'img/logo.svg' import logo %}
                 {{ logo({ class: 'logo-img' }) }}
+            </div>
+            <div class="logo logo-text">
                 BtrBlocks
             </div>
         </div>
@@ -29,6 +31,9 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 BtrBlocks. All rights reserved.</p>
+            <p>
+                <a href="/imprint">Imprint</a> &nbsp;|&nbsp; <a href="/privacy">Privacy</a>
+            </p>
         </div>
     </footer>
 </body>
