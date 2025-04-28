@@ -36,10 +36,21 @@
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
-	--primary: var(--btr-blue);
-	--secondary: var(--btr-cyan);
+	--primary: var(--btr-cyan);
+	--secondary: var(--btr-blue);
 	--accent: var(--btr-orange);
 	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
+
+	--accent-gradient-infinite: linear-gradient(125deg,
+												var(--btr-blue),
+												var(--btr-cyan),
+												var(--btr-green),
+												var(--btr-orange),
+												var(--btr-purple),
+												var(--btr-cyan),
+												var(--btr-blue),
+												var(--btr-green)
+);
 
 	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
@@ -62,6 +73,9 @@
 		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: var(--color-gray-50);
+
+		--primary: var(--btr-blue);
+		--secondary: var(--btr-cyan);
 
 		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
@@ -390,7 +404,26 @@ header {
 
 .subscribe-btn:hover {
     background-color: var(--secondary);
+    background: var(--accent-gradient-infinite);
+    color: var(--text-color);
+    animation: shimmer 8s ease infinite;
+    background-size: 800% 800%;
 }
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
 
 .mission {
     background-color: var(--code-bg);
