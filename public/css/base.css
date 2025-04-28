@@ -7,6 +7,13 @@
 
 /* Theme colors */
 :root {
+    --btr-orange: #fb9c1f;
+	--btr-red: #e53636;
+	--btr-purple: #bd206e;
+	--btr-green: #02b353;
+	--btr-cyan: #01a0ac;
+	--btr-blue: #008fc9;
+
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
@@ -15,21 +22,20 @@
 	--background-color-secondary: #f6f6f6;
 	--separator-color: var(--color-gray-50);
 
-	--text-color: var(#0f172a);
+	--text-color: #000;
 	--text-color-faded: #64748b;
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
-	--primary: #63c228;
-	--secondary: #256706;
-	--accent: #FF6600;
-	--accent-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
+	--accent: var(--btr-orange);
+	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
 
 	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
 	--syntax-tab-size: 2;
-	--default-font: var(--font-family);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,17 +49,11 @@
 		--separator-color: var(--color-gray-90);
 
 		/* --text-color is assigned to --color-gray-_ above */
-	    --text-color: #eaeaea;
+	    --text-color: #fff;
 	    --text-color-faded: var(--color-gray-50);
 		--text-color-link: #1493fb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
-
-		/*--primary: #0066FF; --secondary: #00CCFF; */
-		--primary: #63c228;
-		--secondary: #256706;
-		--accent: #00CCFF;
-		--accent-gradient: linear-gradient(135deg, var(--primary), var(--secondary));
 
 		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
@@ -73,7 +73,7 @@ html,
 body {
 	padding: 0;
 	margin: 0 auto;
-	font-family: var(--default-font);
+	font-family: var(--font-family);
 	color: var(--text-color);
 	background-color: var(--background-color);
 }

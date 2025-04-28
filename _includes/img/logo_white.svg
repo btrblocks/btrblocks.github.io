@@ -1,0 +1,20 @@
+{%- macro logo(params) -%}
+<svg width={{ params.width or "100%" }}
+  height={{ params.height or "100%" }}
+  class={{ params.class or "btrblocks-logo" }}
+  viewBox="0 0 1658 812"
+  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>BtrBlocks</title>
+  <g id="btrblockswhite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <text id="BtrBlocks" font-family="Menlo-Bold, Menlo" font-size="300" font-weight="bold" fill="#FFFFFF">
+      <tspan x="31.7314453" y="741">BtrBlocks</tspan>
+    </text>
+    <rect id="Rectangle-Copy-8" fill="#008FC9" x="914" y="292" width="100" height="100" rx="5"></rect>
+    <rect id="Rectangle-Copy-6" fill="#01A0AC" x="664" y="292" width="225" height="100" rx="5"></rect>
+    <rect id="Rectangle-Copy-5" fill="#02B353" x="789" y="167" width="225" height="100" rx="5"></rect>
+    <rect id="Rectangle-Copy-2" fill="#BD206E" x="914" y="42" width="100" height="100" rx="5"></rect>
+    <rect id="Rectangle-Copy" fill="#E53636" x="789" y="42" width="100" height="100" rx="5"></rect>
+    <rect id="Rectangle" fill="#FB9C1F" x="664" y="42" width="100" height="225" rx="5"></rect>
+  </g>
+</svg>
+{%- endmacro -%}
