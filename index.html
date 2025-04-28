@@ -1,55 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>BtrBlocks</title>
-		<meta name="description" content="BtrBlocks is building the future cloud infrastructure.">
-		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="BtrBlocks">
-		
-		
-		<style>/* Defaults */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BtrBlocks - Better building blocks for the cloud</title>
+    <style>/* Defaults */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: "JetBrains Mono", Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;
 }
 
 /* Theme colors */
 :root {
+    --btr-orange: #fb9c1f;
+	--btr-red: #e53636;
+	--btr-purple: #bd206e;
+	--btr-green: #02b353;
+	--btr-cyan: #01a0ac;
+	--btr-blue: #008fc9;
+
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
-	--separator-color: var(--color-gray-20);
+	--background-color-secondary: #f6f6f6;
+	--separator-color: var(--color-gray-50);
 
-	--text-color: var(#0f172a);
+	--text-color: #000;
 	--text-color-faded: #64748b;
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
+	--accent: var(--btr-orange);
+	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
+
+	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
 	--syntax-tab-size: 2;
-	--default-font: var(--font-family-monospace);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
 		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
+		--color-gray-90: #494949;
 
+		--background-color: #151515;
+		--background-color-secondary: #0a1505;
 		--separator-color: var(--color-gray-90);
 
 		/* --text-color is assigned to --color-gray-_ above */
-	    --text-color: #eaeaea;
+	    --text-color: #fff;
 	    --text-color-faded: var(--color-gray-50);
-		--text-color-link: #1493fb;
+		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		--text-color-link-visited: var(--color-gray-50);
 
-		--background-color: #121517;
+		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -67,7 +79,7 @@ html,
 body {
 	padding: 0;
 	margin: 0 auto;
-	font-family: var(--default-font);
+	font-family: var(--font-family);
 	color: var(--text-color);
 	background-color: var(--background-color);
 }
@@ -75,7 +87,6 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
 	font-family: var(--default-font);
 }
 
@@ -101,6 +112,10 @@ img[src$=".svg"] {
   width: 100%;
   height: auto;
   max-width: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-monospace);
 }
 
 p:last-child {
@@ -214,98 +229,286 @@ header {
 .nav a[href][aria-current="page"] {
 	text-decoration: underline;
 }
-
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
-}
-.postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
-}
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
-}
-.postlist-date {
-	word-spacing: -0.5px;
-}
-.postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
-}
-.postlist-item-active .postlist-link {
-	font-weight: bold;
+html {
 }
 
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
-	font-style: italic;
+body {
+    line-height: 1.6;
 }
-.postlist-item > .post-tag {
-	align-self: center;
+
+header {
+    color: white;
+    padding: 3.0rem 0 1.5rem 0;
+    border-bottom: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background-color);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: var(--font-family-monospace);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 3.2rem;
+}
+
+.logo-text {
+    padding-top: 0.12rem;
+}
+
+.slogan {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.description {
+    font-size: 1.3rem;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.principles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.principle-box {
+    background-color: var(--background-color-secondary);
+    border: 1px solid var(--color-gray-90);
+    border-radius: 5px;
+    padding: 2rem;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--large-dropshadow);
+    border-color: var(--secondary);
+}
+
+.principle-box h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.principle-box p {
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    color: var(--primary);
+}
+
+.subscribe-form {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+}
+
+.subscribe-form input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-gray-20);
+    background-color: white;
+    color: black;
+    font-family: var(--font-family-monospace);
+    border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form input::placeholder {
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.subscribe-btn {
+    background: var(--primary);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-family: var(--font-family-monospace);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: var(--secondary);
+}
+
+.mission {
+    background-color: var(--code-bg);
+    padding: 4rem 0;
+    text-align: center;
+    border-top: 1px solid var(--separator-color);
+    border-bottom: 1px solid var(--separator-color);
+}
+
+.mission h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mission p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.code-comment {
+    color: #6A9955;
+    font-family: var(--font-family-monospace);
+    display: block;
+    margin-bottom: 1rem;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .principles {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slogan {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+    }
+
+    .subscribe-form input {
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .subscribe-btn {
+        border-radius: 4px;
+        width: 100%;
+    }
 }</style>
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
 
-		<header>
-			<a href="/" class="home-link">BtrBlocks</a>
-			<nav>
-				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
-				<ul class="nav">
-					
-					
-					
-				</ul>
-			</nav>
-		</header>
+    <header>
+        <div class="container">
+            <div class="logo logo-svg">
+                <svg width="100%" height="100%" class="logo-img" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>btrblocksblack</title>
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-664,-42)">
+    <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5"></rect>
+    <rect fill="#01a0ac" x="664" y="292" width="225" height="100" rx="5"></rect>
+    <rect fill="#02b353" x="789" y="167" width="225" height="100" rx="5"></rect>
+    <rect fill="#bd206e" x="914" y="42" width="100" height="100" rx="5"></rect>
+    <rect fill="#e53636" x="789" y="42" width="100" height="100" rx="5"></rect>
+    <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5"></rect>
+  </g>
+</svg>
+            </div>
+            <div class="logo logo-text">
+                BtrBlocks
+            </div>
+        </div>
+    </header>
 
-		<main id="skip">
-			<heading-anchors>
-				
+    
+<section class="hero">
+    <div class="container hero-content">
+        <h1 class="slogan" id="better-building-blocks-for-the-cloud">Better building blocks for the cloud</h1>
+        <p class="description">
 
-<h1 id="btrblocks">BtrBlocks</h1>
-Building a cloud infrastructure for the future. Coming soon.
+          BtrBlocks is building foundational cloud-independent infrastructure
+          services so you don't have to.
+
+          No more legacy tech, no more walled gardens.
+
+        </p>
+          <form action="https://buttondown.com/api/emails/embed-subscribe/btrblocks" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')" class="subscribe-form">
+            <input type="email" name="email" placeholder="you@example.com" required="">
+            <button type="submit" class="subscribe-btn">Stay tuned</button>
+        </form>
+    </div>
+</section>
 
 
 
 
 
 
-			</heading-anchors>
-		</main>
 
-		<footer>
-			<p><a href="/feed/feed.xml">RSS Feed</a></p><p>
-			
-		</p></footer>
-
-		<!-- This page `/` was built on 2025-04-02T08:11:52.241Z -->
-		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
-	</body>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BtrBlocks. All rights reserved.</p>
+            
+        </div>
+    </footer>
+</body>
 </html>

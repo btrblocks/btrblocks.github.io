@@ -3,54 +3,128 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>BtrBlocks</title>
+		<title>Blog</title>
 		<meta name="description" content="BtrBlocks is building the future cloud infrastructure.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="BtrBlocks">
 		
 		
 		<style>.postlist { counter-reset: start-from 1 }
+body {
+   max-width: 40em;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
 /* Defaults */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: "JetBrains Mono", Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;
 }
 
 /* Theme colors */
 :root {
+    --btr-orange: #fb9c1f;
+	--btr-red: #e53636;
+	--btr-purple: #bd206e;
+	--btr-green: #02b353;
+	--btr-cyan: #01a0ac;
+	--btr-blue: #008fc9;
+
 	--color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
-	--separator-color: var(--color-gray-20);
+	--background-color-secondary: #f6f6f6;
+	--separator-color: var(--color-gray-50);
 
-	--text-color: var(#0f172a);
+	--text-color: #000;
 	--text-color-faded: #64748b;
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
+	--accent: var(--btr-orange);
+	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
+
+	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
 	--syntax-tab-size: 2;
-	--default-font: var(--font-family-monospace);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
 		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
+		--color-gray-90: #494949;
 
+		--background-color: #151515;
+		--background-color-secondary: #0a1505;
 		--separator-color: var(--color-gray-90);
 
 		/* --text-color is assigned to --color-gray-_ above */
-	    --text-color: #eaeaea;
+	    --text-color: #fff;
 	    --text-color-faded: var(--color-gray-50);
-		--text-color-link: #1493fb;
+		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		--text-color-link-visited: var(--color-gray-50);
 
-		--background-color: #121517;
+		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -68,7 +142,7 @@ html,
 body {
 	padding: 0;
 	margin: 0 auto;
-	font-family: var(--default-font);
+	font-family: var(--font-family);
 	color: var(--text-color);
 	background-color: var(--background-color);
 }
@@ -76,7 +150,6 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
 	font-family: var(--default-font);
 }
 
@@ -102,6 +175,10 @@ img[src$=".svg"] {
   width: 100%;
   height: auto;
   max-width: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-monospace);
 }
 
 p:last-child {
@@ -214,61 +291,6 @@ header {
 }
 .nav a[href][aria-current="page"] {
 	text-decoration: underline;
-}
-
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
-}
-.postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
-}
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
-}
-.postlist-date {
-	word-spacing: -0.5px;
-}
-.postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
-}
-.postlist-item-active .postlist-link {
-	font-weight: bold;
-}
-
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
-	font-style: italic;
-}
-.postlist-item > .post-tag {
-	align-self: center;
 }</style>
 	</head>
 	<body>
@@ -280,6 +302,10 @@ header {
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
 					
+						<li class="nav-item"><a href="/">Home</a></li>
+					
+					
+						<li class="nav-item"><a href="/blog/" aria-current="page">Blog</a></li>
 					
 					
 				</ul>
@@ -289,6 +315,8 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
+
+
 <h1 id="blog">Blog</h1>
 
 
@@ -306,7 +334,7 @@ header {
 			
 		</p></footer>
 
-		<!-- This page `/blog/` was built on 2025-04-02T08:11:52.241Z -->
+		<!-- This page `/blog/` was built on 2025-04-28T20:05:17.042Z -->
 		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>
