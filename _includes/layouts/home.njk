@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or "BtrBlocks - Better building blocks for the cloud" }}</title>
-
+    {# favicon plugin segfaults  #}
+    {# favicon './content/btrblocks.svg' #}
     {#- Add an arbitrary string to the bundle #}
     {%- css %}{% include "public/css/base.css" %}{% endcss %}
     {%- css %}{% include "public/css/home.css" %}{% endcss %}
