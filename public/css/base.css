@@ -51,9 +51,9 @@
 		/* --text-color is assigned to --color-gray-_ above */
 	    --text-color: #fff;
 	    --text-color-faded: var(--color-gray-50);
-		--text-color-link: #1493fb;
+		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		--text-color-link-visited: var(--color-gray-50);
 
 		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
