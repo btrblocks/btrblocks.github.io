@@ -16,15 +16,11 @@
     {# The layout includes the header and the footer. Content itself is provided by whatever page uses this layout #}
 
     <header>
-        <div class="container">
-            <div class="logo logo-svg">
-                {%- from 'img/logo.svg' import logo %}
-                {{ logo({ class: 'logo-img' }) }}
-            </div>
-            <div class="logo logo-text">
-                BtrBlocks
-            </div>
+        <div class="logo logo-svg">
+            {%- from 'img/logo.svg' import logo %}
+            {{ logo({ class: 'logo-img' }) }}
         </div>
+        <span class="logo logo-text">BtrBlocks</span>
     </header>
 
     {{ content | safe }}
