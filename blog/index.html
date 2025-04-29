@@ -97,8 +97,8 @@ body {
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
-	--primary: var(--btr-cyan);
-	--secondary: var(--btr-blue);
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
 	--accent: var(--btr-orange);
 	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
 
@@ -134,9 +134,6 @@ body {
 		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: var(--color-gray-50);
-
-		--primary: var(--btr-blue);
-		--secondary: var(--btr-cyan);
 
 		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
@@ -261,12 +258,20 @@ code {
 	word-break: break-all;
 }
 
+@media screen and (min-width: 1536px) {
+  :root {font-size: 110%;}
+}
+
 @media screen and (max-width: 768px) {
   :root {font-size: 90%;}
 }
 
 @media screen and (max-width: 384px) {
   :root {font-size: 70%;}
+}
+
+@media screen and (max-width: 250px) {
+  :root {font-size: 50%;}
 }
 main, header {
     border-bottom: 1px dashed var(--separator-color);
@@ -356,7 +361,7 @@ header:after, main:after {
 			
 		</p></footer>
 
-		<!-- This page `/blog/` was built on 2025-04-29T17:56:16.470Z -->
+		<!-- This page `/blog/` was built on 2025-04-29T18:16:29.520Z -->
 		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>

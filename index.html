@@ -36,8 +36,8 @@
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
 
-	--primary: var(--btr-cyan);
-	--secondary: var(--btr-blue);
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
 	--accent: var(--btr-orange);
 	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
 
@@ -73,9 +73,6 @@
 		--text-color-link: var(--text-color);
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: var(--color-gray-50);
-
-		--primary: var(--btr-blue);
-		--secondary: var(--btr-cyan);
 
 		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 	}
@@ -200,12 +197,20 @@ code {
 	word-break: break-all;
 }
 
+@media screen and (min-width: 1536px) {
+  :root {font-size: 110%;}
+}
+
 @media screen and (max-width: 768px) {
   :root {font-size: 90%;}
 }
 
 @media screen and (max-width: 384px) {
   :root {font-size: 70%;}
+}
+
+@media screen and (max-width: 250px) {
+  :root {font-size: 50%;}
 }
 html {
 }
@@ -319,21 +324,20 @@ footer {
 }
 
 .subscribe-btn {
-    background: var(--primary);
-    color: var(--text-color);
+    background-color: var(--primary);
+    color: white;
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 0 4px 4px 0;
     font-family: var(--font-family-monospace);
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 1.5s ease-out;
 }
 
 .subscribe-btn:hover {
     background-color: var(--secondary);
     background: var(--accent-gradient-infinite);
-    color: var(--text-color);
     animation: shimmer 8s ease infinite;
     background-size: 800% 800%;
 }
