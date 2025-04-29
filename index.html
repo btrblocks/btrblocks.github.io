@@ -332,11 +332,10 @@ footer {
     font-family: var(--font-family-monospace);
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 1.5s ease-out;
 }
 
 .subscribe-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--secondary); /* old browser compat */
     background: var(--accent-gradient-infinite);
     animation: shimmer 8s ease infinite;
     background-size: 800% 800%;
