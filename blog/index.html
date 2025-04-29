@@ -142,7 +142,6 @@ body {
 	}
 }
 
-
 /* Global stylesheet */
 * {
 	box-sizing: border-box;
@@ -224,16 +223,6 @@ main :first-child {
 	margin-top: 0;
 }
 
-main, header {
-	border-bottom: 1px dashed var(--separator-color);
-	margin-bottom: 1em;
-}
-header:after, main:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 footer {
 	display: flex;
 	justify-content: center;
@@ -272,39 +261,58 @@ code {
 	word-break: break-all;
 }
 
+@media screen and (max-width: 768px) {
+  :root {font-size: 90%;}
+}
+
+@media screen and (max-width: 384px) {
+  :root {font-size: 70%;}
+}
+main, header {
+    border-bottom: 1px dashed var(--separator-color);
+    margin-bottom: 1em;
+}
 /* Header */
 header {
-	display: flex;
-	gap: 1em .5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
+    display: flex;
+    gap: 1em .5em;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1em;
 }
+
+header:after, main:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
+    font-size: 1em; /* 16px /16 */
+    font-weight: 700;
+    margin-right: 2em;
 }
+
 .home-link:link:not(:hover) {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 /* Nav */
 .nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 .nav-item {
-	display: inline-block;
-	margin-right: 1em;
+    display: inline-block;
+    margin-right: 1em;
 }
 .nav-item a[href]:not(:hover) {
-	text-decoration: none;
+    text-decoration: none;
 }
 .nav a[href][aria-current="page"] {
-	text-decoration: underline;
+    text-decoration: underline;
 }</style>
 	</head>
 	<body>
@@ -348,7 +356,7 @@ header {
 			
 		</p></footer>
 
-		<!-- This page `/blog/` was built on 2025-04-28T20:48:03.627Z -->
+		<!-- This page `/blog/` was built on 2025-04-29T17:56:16.470Z -->
 		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>

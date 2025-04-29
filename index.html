@@ -81,7 +81,6 @@
 	}
 }
 
-
 /* Global stylesheet */
 * {
 	box-sizing: border-box;
@@ -163,16 +162,6 @@ main :first-child {
 	margin-top: 0;
 }
 
-main, header {
-	border-bottom: 1px dashed var(--separator-color);
-	margin-bottom: 1em;
-}
-header:after, main:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 footer {
 	display: flex;
 	justify-content: center;
@@ -211,39 +200,12 @@ code {
 	word-break: break-all;
 }
 
-/* Header */
-header {
-	display: flex;
-	gap: 1em .5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
-}
-.home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-	text-decoration: none;
+@media screen and (max-width: 768px) {
+  :root {font-size: 90%;}
 }
 
-/* Nav */
-.nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-	margin-right: 1em;
-}
-.nav-item a[href]:not(:hover) {
-	text-decoration: none;
-}
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
+@media screen and (max-width: 384px) {
+  :root {font-size: 70%;}
 }
 html {
 }
@@ -252,16 +214,38 @@ body {
     line-height: 1.6;
 }
 
-header {
-    color: white;
-    padding: 3.0rem 0 1.5rem 0;
-    border-bottom: none;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+}
+
+div.container, section.container {
+    padding: 0 2em;
+}
+
+header {
+    padding: 3.0rem 0 1.75rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.logo-img {
+    height: 3.2rem;
+}
+
+.logo-text {
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: var(--font-family-monospace);
+    color: var(--text-color);
 }
 
 .hero {
@@ -293,23 +277,6 @@ header {
     align-items: center;
 }
 
-.logo {
-    font-size: 2.8rem;
-    font-weight: 700;
-    font-family: var(--font-family-monospace);
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 3.2rem;
-}
-
-.logo-text {
-    padding-top: 0.12rem;
-}
-
 .slogan {
     font-size: 2.2rem;
     font-weight: 600;
@@ -322,45 +289,6 @@ header {
     max-width: 800px;
     text-align: center;
     margin-bottom: 3rem;
-}
-
-.principles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin: 3rem 0;
-}
-
-.principle-box {
-    background-color: var(--background-color-secondary);
-    border: 1px solid var(--color-gray-90);
-    border-radius: 5px;
-    padding: 2rem;
-    width: 300px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.principle-box:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--large-dropshadow);
-    border-color: var(--secondary);
-}
-
-.principle-box h3 {
-    color: var(--secondary);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.principle-box p {
-}
-
-.icon {
-    font-size: 1.5rem;
-    margin-right: 0.75rem;
-    color: var(--primary);
 }
 
 .subscribe-form {
@@ -422,57 +350,7 @@ header {
     }
 }
 
-
-
-
-.mission {
-    background-color: var(--code-bg);
-    padding: 4rem 0;
-    text-align: center;
-    border-top: 1px solid var(--separator-color);
-    border-bottom: 1px solid var(--separator-color);
-}
-
-.mission h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.mission p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-}
-
-.code-comment {
-    color: #6A9955;
-    font-family: var(--font-family-monospace);
-    display: block;
-    margin-bottom: 1rem;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto 2rem auto;
-}
-
-footer {
-    padding: 2rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
 @media (max-width: 768px) {
-    .principles {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .slogan {
-        font-size: 1.5rem;
-    }
-
-    .description {
-        font-size: 1rem;
-    }
 
     .subscribe-form {
         flex-direction: column;
@@ -494,9 +372,8 @@ footer {
     
 
     <header>
-        <div class="container">
-            <div class="logo logo-svg">
-                <svg width="100%" height="100%" class="logo-img" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="logo logo-svg">
+            <svg width="100%" height="100%" class="logo-img" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>btrblocksblack</title>
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-664,-42)">
     <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5"></rect>
@@ -507,11 +384,8 @@ footer {
     <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5"></rect>
   </g>
 </svg>
-            </div>
-            <div class="logo logo-text">
-                BtrBlocks
-            </div>
         </div>
+        <span class="logo logo-text">BtrBlocks</span>
     </header>
 
     
