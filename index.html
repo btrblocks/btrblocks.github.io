@@ -6,7 +6,80 @@
     <title>BtrBlocks - Better building blocks for the cloud</title>
     
     
-    <style>/* Defaults */
+    <style>.subscribe-form {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+}
+
+.subscribe-form input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-gray-20);
+    background-color: white;
+    color: black;
+    font-family: var(--font-family-monospace);
+    border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form input::placeholder {
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.subscribe-btn {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-family: var(--font-family-monospace);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.subscribe-btn:hover {
+    background-color: var(--secondary); /* old browser compat */
+    background: var(--accent-gradient-infinite);
+    animation: shimmer 8s ease infinite;
+    background-size: 800% 800%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .subscribe-form {
+        flex-direction: column;
+    }
+
+    .subscribe-form input {
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .subscribe-btn {
+        border-radius: 4px;
+        width: 100%;
+    }
+}
+/* Defaults */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
@@ -294,80 +367,6 @@ footer {
     max-width: 800px;
     text-align: center;
     margin-bottom: 3rem;
-}
-
-.subscribe-form {
-    display: flex;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 500px;
-    justify-content: center;
-}
-
-.subscribe-form input {
-    flex-grow: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-gray-20);
-    background-color: white;
-    color: black;
-    font-family: var(--font-family-monospace);
-    border-radius: 4px 0 0 4px;
-}
-
-.subscribe-form input::placeholder {
-}
-
-.subscribe-form input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-.subscribe-btn {
-    background-color: var(--primary);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    font-family: var(--font-family-monospace);
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.subscribe-btn:hover {
-    background-color: var(--secondary); /* old browser compat */
-    background: var(--accent-gradient-infinite);
-    animation: shimmer 8s ease infinite;
-    background-size: 800% 800%;
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .subscribe-form {
-        flex-direction: column;
-    }
-
-    .subscribe-form input {
-        border-radius: 4px;
-        margin-bottom: 1rem;
-    }
-
-    .subscribe-btn {
-        border-radius: 4px;
-        width: 100%;
-    }
 }</style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
@@ -401,12 +400,13 @@ footer {
           services so you don't have to.
 
           No more legacy tech, no more lock-in.
-
         </p>
-          <form action="https://buttondown.com/api/emails/embed-subscribe/btrblocks" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')" class="subscribe-form">
-            <input type="email" name="email" placeholder="you@example.com" required="">
-            <button type="submit" class="subscribe-btn">Keep me posted</button>
-        </form>
+        
+<form action="https://buttondown.com/api/emails/embed-subscribe/btrblocks" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')" class="subscribe-form">
+    <input type="email" name="email" placeholder="you@example.com" required="">
+        <button type="submit" class="subscribe-btn">Keep me posted</button>
+</form>
+
     </div>
 </section>
 
@@ -415,6 +415,16 @@ footer {
 
 
 
+
+    <aside class="latest-posts">
+        <div class="container">
+            
+            
+
+
+
+        </div>
+    </aside>
 
     <footer>
         <div class="container">
