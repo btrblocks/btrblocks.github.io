@@ -25,6 +25,13 @@
 
     {{ content | safe }}
 
+    <aside class="latest-posts">
+        <div class="container">
+            {% set numberOfLatestPostsToShow = 3 %}
+            {% include "latest-posts.njk" %}
+        </div>
+    </aside>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 BtrBlocks. All rights reserved.</p>

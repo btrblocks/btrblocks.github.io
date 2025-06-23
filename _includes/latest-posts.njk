@@ -1,0 +1,29 @@
+{% set postsCount = collections.posts | length %}
+{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
+{% if latestPostsCount > 0 %}
+    {%- css %}{% include "public/css/latest-posts.css" %}{% endcss %}
+    {% if latestPostsCount > 1 %}
+    	{# <h2>Latest {{ latestPostsCount }} Posts</h2> #}
+    	<h2>Latest Posts</h2>
+    {% else %}
+    	<h2>Latest Post</h2>
+    {% endif %}
+
+	{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+	{% set postslistCounter = postsCount %}
+	{% include "postslist.njk" %}
+
+	{% set morePosts = postsCount - numberOfLatestPostsToShow %}
+	{% if morePosts > 0 %}
+	<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found <a href="blog.njk">here</a>.</p>
+	{% endif %}
+
+	{# List every content page in the project #}
+	{#
+	<ul>
+		{%- for entry in collections.all %}
+		<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
+		{%- endfor %}
+	</ul>
+#}
+{% endif %}

@@ -15,17 +15,8 @@ eleventyNavigation:
           services so you don't have to.
 
           No more legacy tech, no more lock-in.
-
         </p>
-          <form
-            action="https://buttondown.com/api/emails/embed-subscribe/btrblocks"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')"
-            class="subscribe-form" >
-            <input type="email" name="email" placeholder="you@example.com" required>
-            <button type="submit" class="subscribe-btn">Keep me posted</button>
-        </form>
+        {% include "subscribe.njk" %}
     </div>
 </section>
 
