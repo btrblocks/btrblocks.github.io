@@ -2,6 +2,11 @@ body {
    max-width: 40em;
 }
 
+article.blog-content {
+	/* TODO left-align instead? */
+	text-align: justify;
+}
+
 /* Posts list */
 .postlist {
 	list-style: none;

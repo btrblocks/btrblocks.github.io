@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@zachleat/heading-anchors": "^1.0.1",
 		"eleventy-favicon": "^1.1.3",
-		"eleventy-plugin-svg-contents": "^0.7.0"
+		"eleventy-plugin-svg-contents": "^0.7.0",
+		"markdown-it-footnote": "^4.0.0"
 	}
 }
