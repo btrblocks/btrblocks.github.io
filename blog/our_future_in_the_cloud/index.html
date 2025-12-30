@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Our Future in the Cloud: Can We Prevent Technological Dystopia?</title>
+		<meta name="description" content="BtrBlocks is building the future cloud infrastructure.">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="BtrBlocks">
+		
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+body {
+   max-width: 40em;
+}
+
+article.blog-content {
+	/* TODO left-align instead? */
+	text-align: justify;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+/* Tags list */
+.post-metadata, .post-taglist {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-color-faded);
+}
+
+.post-metadata {
+   margin-bottom: 1em;
+}
+
+.post-metadata li + li:before {
+    content: "•";
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.post-taglist {
+    margin-top: 1em;
+}
+
+.links-nextprev {
+    display: flex;
+    justify-content: space-between;
+    gap: .5em 1em;
+    list-style: "";
+    border-top: 1px dashed var(--color-gray-20);
+    padding: 1em 0 0 0;
+}
+.links-nextprev > * {
+    flex-grow: 1;
+}
+.links-nextprev-next {
+    text-align: right;
+}
+
+.links-viewall {
+	display: flex;
+	justify-content: center;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* Defaults */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;
+}
+
+/* Theme colors */
+:root {
+    --btr-orange: #fb9c1f;
+	--btr-red: #e53636;
+	--btr-purple: #bd206e;
+	--btr-green: #02b353;
+	--btr-cyan: #01a0ac;
+	--btr-blue: #008fc9;
+
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+	--background-color-secondary: #f6f6f6;
+	--separator-color: var(--color-gray-50);
+
+	--text-color: #000;
+	--text-color-faded: #64748b;
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
+	--accent: var(--btr-orange);
+	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
+
+	--accent-gradient-infinite: linear-gradient(125deg,
+												var(--btr-blue),
+												var(--btr-cyan),
+												var(--btr-green),
+												var(--btr-orange),
+												var(--btr-purple),
+												var(--btr-cyan),
+												var(--btr-blue),
+												var(--btr-green)
+);
+
+	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #494949;
+
+		--background-color: #151515;
+		--background-color-secondary: #0a1505;
+		--separator-color: var(--color-gray-90);
+
+		/* --text-color is assigned to --color-gray-_ above */
+	    --text-color: #fff;
+	    --text-color-faded: var(--color-gray-50);
+		--text-color-link: var(--text-color);
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: var(--color-gray-50);
+
+		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	font-family: var(--default-font);
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-monospace);
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	/*border-top: 1px dashed var(--color-gray-20);*/
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+@media screen and (min-width: 1536px) {
+  :root {font-size: 110%;}
+}
+
+@media screen and (max-width: 768px) {
+  :root {font-size: 90%;}
+}
+
+@media screen and (max-width: 384px) {
+  :root {font-size: 70%;}
+}
+
+@media screen and (max-width: 250px) {
+  :root {font-size: 50%;}
+}
+main, header {
+    border-bottom: 1px dashed var(--separator-color);
+    margin-bottom: 1em;
+}
+/* Header */
+header {
+    display: flex;
+    gap: 1em .5em;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1em;
+}
+
+header:after, main:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.home-link {
+    font-size: 1em; /* 16px /16 */
+    font-weight: 700;
+    margin-right: 2em;
+}
+
+.home-link:link:not(:hover) {
+    text-decoration: none;
+}
+
+/* Nav */
+.nav {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.nav-item {
+    display: inline-block;
+    margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+    text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+    text-decoration: underline;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">BtrBlocks</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					
+						<li class="nav-item"><a href="/">Home</a></li>
+					
+					
+						<li class="nav-item"><a href="/blog/">Blog</a></li>
+					
+					
+						<li class="nav-item"><a href="/tags/">Tags</a></li>
+					
+					
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+
+<h1 id="our-future-in-the-cloud-can-we-prevent-technological-dystopia">Our Future in the Cloud: Can We Prevent Technological Dystopia?</h1>
+<ul class="post-metadata">
+	<li><time datetime="2025-12-30">30 December 2025</time></li>
+    
+      <li><span class="authorlist">Viktor Leis</span></li>
+    
+</ul>
+
+<article class="blog-content">
+<p>The promise of the cloud is computing as a utility: like electricity from a power socket, the cloud promises computing infrastructure that “just works”. The massive scale of the public cloud hyperscalers (AWS, Azure, and Google Cloud) should also yield economies of scale, theoretically translating to lower costs for customers. Cloud adoption has been massive, and even more organizations are moving to the cloud as fast as they can. One consequence of this trend is that public cloud hyperscalers have obtained a large share of the server hardware market.</p>
+<p>Over the past decade, AWS transitioned from using commodity hardware (Intel CPUs, Xen virtualization, off-the-shelf NICs and SSDs) to designing custom processors (Graviton)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, virtualization technology (Nitro)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, networking (ENA NICs and custom network switches)<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup><sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, and flash storage controllers (Nitro SSDs)<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>.</p>
+<p>AWS’s proprietary Graviton instances offer by far the best performance per dollar in AWS and the gap to Intel/AMD is growing<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>:<br>
+<a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/OV3fpp4MGr-518.svg" alt="Performance per dollar for different instance generations" width="518" height="288"></a></p>
+<p>Using custom network hardware, AWS also offers fast and cheap networking<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>:<br>
+<a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/Ne1t65uTfJ-518.svg" alt="Networking trend" width="518" height="216"></a></p>
+<p>The dominance of the hyperscalers is even more pronounced at the infrastructure service level (storage, databases). Foundational services like object storage (S3) and virtualized block storage (EBS) are completely dominated by the hyperscalers. For the database market, Gartner estimated that already in 2021 AWS owned a quarter of the $80B/year database market revenue<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup> — not too shabby for a company that started as a bookstore.</p>
+<p>The big market share in server hardware and infrastructure services together with the high-level service ecosystem positively reinforce each other. Thus, we appear to be on the path to vertically-integrated monopoly similar to the IBM of the 1960s-1980s (“Big Blue”) or the Microsoft/Intel (“Wintel”) duopoly of the 1990s and 2000s. In their respective eras, IBM and Microsoft/Intel ruled the computing world, setting most relevant standards and forcing everyone to be part of the ecosystem or risk becoming irrelevant.</p>
+<p>If we extrapolate current cloud trends, it appears that AWS may soon be in a similar position. AWS invented the modern incarnation of the cloud and is still the technology and market leader. The other hyperscalers are usually following with very similar offerings and prices. So, should we simply accept the fact that resistance to “Big Orange” is futile? Should we all just assimilate with the Borg collective?<br>
+<picture><source type="image/avif" srcset="/blog/our_future_in_the_cloud/p5YeLOG2sr-1253.avif 1253w"><source type="image/webp" srcset="/blog/our_future_in_the_cloud/p5YeLOG2sr-1253.webp 1253w"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/p5YeLOG2sr-1253.jpeg" alt="Jeff as Borg" width="1253" height="674"></picture></p>
+<p>The cloud is becoming a foundational technology of our society, and allowing one company to control it may not be the best idea: too much market power leads to very high prices and limits innovation. It is sometimes claimed that the sheer scale and custom hardware makes it impossible to offer prices competitive to the hyperscalers. Luckily, that is not the case yet as the following table comparing prices of AMD virtual machines with identical specs (32 vCPUS, 128 GB of RAM) illustrates <sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>:</p>
+<!-- M-x markdown-table-align -->
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Cloud</th>
+<th style="text-align:right">Instance</th>
+<th style="text-align:right">vCPUs</th>
+<th style="text-align:right">RAM</th>
+<th style="text-align:right">$/month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">AWS EC2</td>
+<td style="text-align:right">m6a.8xlarge  (Epyc 3)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">995</td>
+</tr>
+<tr>
+<td style="text-align:right">MS Azure</td>
+<td style="text-align:right">D32as v5 (Epyc 3)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">991</td>
+</tr>
+<tr>
+<td style="text-align:right">Google</td>
+<td style="text-align:right">t2d-standard-32 (Epyc 3)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">973</td>
+</tr>
+<tr>
+<td style="text-align:right">Oracle</td>
+<td style="text-align:right">VM.Standard.E4.Flex (Epyc 3)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">426</td>
+</tr>
+<tr>
+<td style="text-align:right">OVHCloud</td>
+<td style="text-align:right">B3-128 (Epyc 3)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">616</td>
+</tr>
+<tr>
+<td style="text-align:right">Hetzner</td>
+<td style="text-align:right">CCX53 (Epyc 3/4)</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">255</td>
+</tr>
+</tbody>
+</table>
+<p>AWS, Microsoft, and Google have suspiciously similar prices. Hetzner, a relatively small, independent (and profitable) cloud provider from Germany offers similar hardware for a quarter of the price. This pricing gap is possible because currently server hardware is still a highly competitive commodity market. For example, the list price for a Dell PowerEdge server with similar specs is around $5,000, which means hyperscalers recoup their server cost in about 5 months. Note that these are on-demand prices, so in practice most customers will pay a fraction of these prices — but this is the case for all vendors (including Hetzner and Dell).</p>
+<p>Another, infamous, example of very high cost is egress fees, i.e., the cost to move data out of the cloud. Again, AWS, Google, and Azure have suspiciously similar prices at $0.05 or $0.04 per GB — while Hetzner charges only $0.0012 (40x less). The magnitude of this shows that egress prices are not tied to real costs — they’re about avoiding competition and locking customers in.</p>
+<p>The existence of low-cost cloud vendors shows that it is still possible to out-compete the hyperscalers at the lowest level of virtual machines. The Big Orange dystopia is not yet inevitable! However, smaller cloud vendors can only offer a subset of the services on top, making them niche players. Thus, the crucial step towards true competition and innovation in the cloud is to provide new infrastructure services that work in all clouds. Just as Linux, the Internet, and open source helped unbundle the Microsoft monopoly, we need to rethink cloud foundations to restore competition and innovation.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://aws.amazon.com/ec2/graviton/">https://aws.amazon.com/ec2/graviton/</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://aws.amazon.com/ec2/nitro/">https://aws.amazon.com/ec2/nitro/</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/">https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a href="https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws">https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p><a href="https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/">https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p><a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA">https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p><a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA">https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p><a href="https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture">https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p><a href="https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf">https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+</article>
+
+<ul class="post-taglist">
+    <li>Tags:&nbsp;&nbsp;</li>
+	  <li><a href="/tags/vision/" class="post-tag">vision</a>,&hairsp;</li>
+	  <li><a href="/tags/cloud/" class="post-tag">cloud</a></li>
+</ul>
+
+
+
+<h2 id="comments">Comments</h2>
+<script src="https://utteranc.es/client.js" repo="maxi-k/btrblocks-blog" issue-term="pathname" label="blog-comment" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><a href="/feed/feed.xml">RSS Feed</a></p><p>
+			
+		</p></footer>
+
+		<!-- This page `/blog/our_future_in_the_cloud/` was built on 2025-12-30T22:51:25.218Z -->
+		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
+	</body>
+</html>
