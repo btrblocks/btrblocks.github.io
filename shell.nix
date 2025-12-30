@@ -1,11 +1,5 @@
-{ pkgs ? import <nixpkgs> {} }:
-
-with pkgs;
-
-mkShell {
-  buildInputs = [
-    nodejs_20
-    gnumake
-    imagemagick
-  ];
-}
+let
+  flake = builtins.getFlake (toString ./.);
+  system = builtins.currentSystem;
+in
+flake.devShells.${system}.default
