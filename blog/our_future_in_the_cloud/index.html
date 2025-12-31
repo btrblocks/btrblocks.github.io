@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -429,6 +429,12 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
+/* Keep long URLs in footnotes from overflowing */
+.footnotes a {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
 main {
 	padding: 1rem;
 }
@@ -564,9 +570,9 @@ header:after, main:after {
 
 <h1 id="our-future-in-the-cloud-can-we-prevent-technological-dystopia">Our Future in the Cloud: Can We Prevent Technological Dystopia?</h1>
 <ul class="post-metadata">
-	<li><time datetime="2025-12-30">30 December 2025</time></li>
+	<li><time datetime="2025-12-31">31 December 2025</time></li>
     
-      <li><span class="authorlist">Viktor Leis</span></li>
+      <li><span class="authorlist">Viktor Leis and Muhammad El-Hindi</span></li>
     
 </ul>
 
@@ -574,9 +580,9 @@ header:after, main:after {
 <p>The promise of the cloud is computing as a utility: like electricity from a power socket, the cloud promises computing infrastructure that “just works”. The massive scale of the public cloud hyperscalers (AWS, Azure, and Google Cloud) should also yield economies of scale, theoretically translating to lower costs for customers. Cloud adoption has been massive, and even more organizations are moving to the cloud as fast as they can. One consequence of this trend is that public cloud hyperscalers have obtained a large share of the server hardware market.</p>
 <p>Over the past decade, AWS transitioned from using commodity hardware (Intel CPUs, Xen virtualization, off-the-shelf NICs and SSDs) to designing custom processors (Graviton)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, virtualization technology (Nitro)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, networking (ENA NICs and custom network switches)<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup><sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, and flash storage controllers (Nitro SSDs)<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>.</p>
 <p>AWS’s proprietary Graviton instances offer by far the best performance per dollar in AWS and the gap to Intel/AMD is growing<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>:<br>
-<a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/OV3fpp4MGr-518.svg" alt="Performance per dollar for different instance generations" width="518" height="288"></a></p>
+<a rel="noreferrer" target="_blank" href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/OV3fpp4MGr-518.svg" alt="Performance per dollar for different instance generations" width="518" height="288"></a></p>
 <p>Using custom network hardware, AWS also offers fast and cheap networking<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>:<br>
-<a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/Ne1t65uTfJ-518.svg" alt="Networking trend" width="518" height="216"></a></p>
+<a rel="noreferrer" target="_blank" href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA"><img loading="lazy" decoding="async" src="/blog/our_future_in_the_cloud/Ne1t65uTfJ-518.svg" alt="Networking trend" width="518" height="216"></a></p>
 <p>The dominance of the hyperscalers is even more pronounced at the infrastructure service level (storage, databases). Foundational services like object storage (S3) and virtualized block storage (EBS) are completely dominated by the hyperscalers. For the database market, Gartner estimated that already in 2021 AWS owned a quarter of the $80B/year database market revenue<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup> — not too shabby for a company that started as a bookstore.</p>
 <p>The big market share in server hardware and infrastructure services together with the high-level service ecosystem positively reinforce each other. Thus, we appear to be on the path to vertically-integrated monopoly similar to the IBM of the 1960s-1980s (“Big Blue”) or the Microsoft/Intel (“Wintel”) duopoly of the 1990s and 2000s. In their respective eras, IBM and Microsoft/Intel ruled the computing world, setting most relevant standards and forcing everyone to be part of the ecosystem or risk becoming irrelevant.</p>
 <p>If we extrapolate current cloud trends, it appears that AWS may soon be in a similar position. AWS invented the modern incarnation of the cloud and is still the technology and market leader. The other hyperscalers are usually following with very similar offerings and prices. So, should we simply accept the fact that resistance to “Big Orange” is futile? Should we all just assimilate with the Borg collective?<br>
@@ -644,23 +650,23 @@ header:after, main:after {
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a href="https://aws.amazon.com/ec2/graviton/">https://aws.amazon.com/ec2/graviton/</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://aws.amazon.com/ec2/graviton/">https://aws.amazon.com/ec2/graviton/</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p><a href="https://aws.amazon.com/ec2/nitro/">https://aws.amazon.com/ec2/nitro/</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://aws.amazon.com/ec2/nitro/">https://aws.amazon.com/ec2/nitro/</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p><a href="https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/">https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/">https://aws.amazon.com/blogs/aws/elastic-network-adapter-high-performance-network-interface-for-amazon-ec2/</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p><a href="https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws">https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws">https://www.theverge.com/circuitbreaker/2021/3/30/22358633/amazon-reportedly-custom-network-switch-silicon-aws</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn5" class="footnote-item"><p><a href="https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/">https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+<li id="fn5" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/">https://aws.amazon.com/blogs/aws/aws-nitro-ssd-high-performance-storage-for-your-i-o-intensive-applications/</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn6" class="footnote-item"><p><a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA">https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+<li id="fn6" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACANwEMpFTKxSwAHBAYwEsA7AFwBpSkCKAnoIA+ihFJ+TJO1biAFgHs400gDNKAW3ZQU-LmG6VOC3gB1OpG7dKtRpAO6KE12coVgwypGO3KACZCpFDsANYIpADkAKQAggCyACKx0aTcrtbRScnpLm50SKyKpAC8MZRI2gBsACzpmYXRAOJIlOTs3Mqc6UJgUdEAkjxCfZyBdAwAam6BvjJIngjevv5BQlYAYgBKAPKJdE5gYtRQpABWylykABS7B6QARm4l2lXhpADqABI4Ozhnq9FO8kJ8KtFmGwuNwxBo4FAoGIWJRwtEAJSkOBgLgAczuRhMZgQ6KsvmCSGeKEYLA4PAA9LJ5EpVJTgmBWCBeCAkIQNhgQN0xGByPiADwAWkYouMck4uNuTnYgUy5VIqm4TDg3AAdEqVYodVwSvxXOxcYpuGqNVrdWaLbrjYp+BzqHi1QBGUmcMna22kSWkXG4phQZTcW6BDT8SgrW4ADzVgmEogkUn41IqULp3EZcgUYhUan4rGUYbUatmEwWQaWcCYlbmvnRmIA1FY7K7hGJ42JSzwuHBVGBbmFdNwwGVWLcAEwABg9AGYdQBWXjzmcrlukdvWWy4hDKbRiMKcBC3Nsd-eH49QSgvKC3WMju8PtWE0wKbe7uzB7hdYRbmiQgAAUAFVSBA5ANF8d5iTubQEX-CVMkEShgkmLAQKIGFMRYSkABIMR3K8bAQeMmFMQIT3YccRxQMo50vPcbCabRxCeJwLysKxQ3DW4bW1dEAG5SGCcgdWUDQNAvUShRFBVMQAYnVP1tQyZRSEtbRzkog8uRAO8UA1DBQG4FAWAFZgwm4EAAF87KAA">Click here to see the plot’s source in cloudspecs.fyi</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn7" class="footnote-item"><p><a href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA">https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+<li id="fn7" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://cloudspecs.fyi/?state=N4IgzgjgNgigrgUwE4E8QC4QGUCiAZHAYQBUACAKgBpSAKAYwEMwFSB3ACwQDtSAzBgLYBLKClJQhAaxYByAKRcZpYgAkcAOWUAlAKo5S+XKQBiAQTxGNAEQCUpIWAD6XBABdWAeySTHHgA6uQsIAXggAJgA6XMZaAPIAsqQMrE78wqJRAOpqWvppImIAkpo0MnQALDLUZQCsVaRlAGwA5vVNDG10AOyt1d1CnQAcrXaxWnyCBaR4hQDS+mUKMiCUIEiEHmEIGCCuHo5gAG7NpAA8ALSkR81grkhCXM00rEJhruykALykHnCufn8AHQvN7sQEPOjsaicITNdiuL4-P4A1yAmFw1EQqFXRgSR6IgCMNiiUV+-z+Z0uzWafigHlcNDCvGoDAQYBoAA9PkgEFAEEwEI4UPykNQUJ8aABmRoABhlFFILlcjmaACMhP8wAB6Aly+Va0iDGxavz3OiC9i-UVRUi2u32h2kOgeOlIT4OZxuTzeXwBIJCUJhSg2x2h21QBiq3mfPxMVwIGj5UTVCJRepKlXqzXVADiWa1YBkNmLpAA1CHw5H2RzETI8Aw4FxIaQAJoi+pib4ydRerySUgAIQYXDCIPetGIA61ABIbEWyxXSM0EB4BI54xyGXZyzw7WBcYLna7HAJh3AGFAaIcL4gwIjT9JAbG+a54-RSsRdDglF2wgxvOczQ8twbRmBY361qqEZ0JIRYlju9rLqujh+B4DwMkeXifDIQEICg84IXa1KBK4fKlD27h9qQqrDqOrzjnc3BhARi4IBysYjo4EjCK47LijK26Lu8CACIKqqsDQxJcFEtL0jQZIojYADcpBbIcgIeLwvCSSpewHMckmkAAxEi5IInspDwgIUCkLGy4rCAEYoGSGCgK4KB+NsmBgLSGogAAvv5QA">Click here to see the plot’s source in cloudspecs.fyi</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn8" class="footnote-item"><p><a href="https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture">https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+<li id="fn8" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture">https://web.archive.org/web/20230202181343/https://blogs.gartner.com/merv-adrian/2022/04/16/dbms-market-transformation-2021-the-big-picture</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn9" class="footnote-item"><p><a href="https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf">https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+<li id="fn9" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf">https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/papers/cloudspecs-final.pdf</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -669,14 +675,14 @@ header:after, main:after {
 
 <ul class="post-taglist">
     <li>Tags:&nbsp;&nbsp;</li>
-	  <li><a href="/tags/vision/" class="post-tag">vision</a>,&hairsp;</li>
+	  <li><a href="/tags/vision/" class="post-tag">vision</a>, </li>
 	  <li><a href="/tags/cloud/" class="post-tag">cloud</a></li>
 </ul>
 
 
 
 <h2 id="comments">Comments</h2>
-<script src="https://utteranc.es/client.js" repo="maxi-k/btrblocks-blog" issue-term="pathname" label="blog-comment" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="maxi-k/btrblocks-blog" issue-term="pathname" label="blog-comment" theme="preferred-color-scheme" crossorigin="anonymous" async>
 </script>
 
 			</heading-anchors>
@@ -687,7 +693,7 @@ header:after, main:after {
 			
 		</p></footer>
 
-		<!-- This page `/blog/our_future_in_the_cloud/` was built on 2025-12-30T22:51:25.218Z -->
+		<!-- This page `/blog/our_future_in_the_cloud/` was built on 2025-12-31T10:35:28.094Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>

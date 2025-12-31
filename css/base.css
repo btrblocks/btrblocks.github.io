@@ -144,6 +144,12 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
+/* Keep long URLs in footnotes from overflowing */
+.footnotes a {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
 main {
 	padding: 1rem;
 }

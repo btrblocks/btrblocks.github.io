@@ -225,6 +225,12 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
+/* Keep long URLs in footnotes from overflowing */
+.footnotes a {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
 main {
 	padding: 1rem;
 }
@@ -444,12 +450,12 @@ footer {
             <svg width="100%" height="100%" class="logo-img" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>btrblocksblack</title>
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-664,-42)">
-    <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5"></rect>
-    <rect fill="#01a0ac" x="664" y="292" width="225" height="100" rx="5"></rect>
-    <rect fill="#02b353" x="789" y="167" width="225" height="100" rx="5"></rect>
-    <rect fill="#bd206e" x="914" y="42" width="100" height="100" rx="5"></rect>
-    <rect fill="#e53636" x="789" y="42" width="100" height="100" rx="5"></rect>
-    <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5"></rect>
+    <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5" />
+    <rect fill="#01a0ac" x="664" y="292" width="225" height="100" rx="5" />
+    <rect fill="#02b353" x="789" y="167" width="225" height="100" rx="5" />
+    <rect fill="#bd206e" x="914" y="42" width="100" height="100" rx="5" />
+    <rect fill="#e53636" x="789" y="42" width="100" height="100" rx="5" />
+    <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5" />
   </g>
 </svg>
         </div>
@@ -469,7 +475,7 @@ footer {
         </p>
         
 <form action="https://buttondown.com/api/emails/embed-subscribe/btrblocks" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/btrblocks', 'popupwindow')" class="subscribe-form">
-    <input type="email" name="email" placeholder="you@example.com" required="">
+    <input type="email" name="email" placeholder="you@example.com" required>
         <button type="submit" class="subscribe-btn">Keep me posted</button>
 </form>
 
@@ -495,10 +501,10 @@ footer {
 	
 	
 	
-<ol reversed="" class="postlist">
+<ol reversed class="postlist">
 	<li class="postlist-item">
 		<a href="/blog/our_future_in_the_cloud/" class="postlist-link">Our Future in the Cloud: Can We Prevent Technological Dystopia?</a>
-		<time class="postlist-date" datetime="2025-12-30">December 2025</time>
+		<time class="postlist-date" datetime="2025-12-31">December 2025</time>
 	</li>
 </ol>
 
@@ -515,7 +521,7 @@ footer {
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 BtrBlocks. All rights reserved.</p>
+            <p>© 2025 BtrBlocks. All rights reserved.</p>
             
         </div>
     </footer>
