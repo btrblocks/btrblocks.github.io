@@ -18,9 +18,18 @@ header:after, main:after {
 }
 
 .home-link {
-    font-size: 1em; /* 16px /16 */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-family-monospace);
+    font-size: 1.1em;
     font-weight: 700;
     margin-right: 2em;
+}
+
+.home-logo {
+    height: 1.5em;
+    width: auto;
 }
 
 .home-link:link:not(:hover) {
@@ -43,4 +52,9 @@ header:after, main:after {
 }
 .nav a[href][aria-current="page"] {
     text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    padding: 0.5em 0 2.5em 0;
 }

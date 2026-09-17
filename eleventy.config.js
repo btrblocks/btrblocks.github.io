@@ -74,7 +74,7 @@ export default async function(eleventyConfig) {
 		metadata: {
 			language: "en",
 			title: "BtrBlocks",
-			subtitle: "BtrBlocks is building the future cloud infrastructure.",
+			subtitle: "Better building blocks for the cloud: storage infrastructure rebuilt for modern SSDs, fast networks, and AI-era workloads.",
 			base: "https://btrblocks.com",
 			author: {
 				name: "BtrBlocks Team"
@@ -123,6 +123,10 @@ export default async function(eleventyConfig) {
 
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
+	});
+
+	eleventyConfig.addShortcode("currentYear", () => {
+		return String((new Date()).getFullYear());
 	});
 
 	// Features to make your build faster (when you need them)

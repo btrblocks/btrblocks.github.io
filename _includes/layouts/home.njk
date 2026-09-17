@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or "BtrBlocks - Better building blocks for the cloud" }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
     {# favicon plugin segfaults  #}
     {# favicon './content/btrblocks.svg' #}
     {#- Add an arbitrary string to the bundle #}
     {%- css %}{% include "public/css/base.css" %}{% endcss %}
     {%- css %}{% include "public/css/home.css" %}{% endcss %}
     <style>{% getBundle "css" %}</style>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     {# The layout includes the header and the footer. Content itself is provided by whatever page uses this layout #}
@@ -25,17 +26,15 @@
 
     {{ content | safe }}
 
-    <aside class="latest-posts">
-        <div class="container">
-            {% set numberOfLatestPostsToShow = 3 %}
-            {% include "latest-posts.njk" %}
-        </div>
-    </aside>
-
     <footer>
         <div class="container">
-            <p>&copy; 2025 BtrBlocks. All rights reserved.</p>
-            {# <p> <a href="/imprint">Imprint</a> &nbsp;|&nbsp; <a href="/privacy">Privacy</a> </p> #}
+            <p>&copy; {% currentYear %} BtrBlocks GmbH</p>
+            <p class="footer-links">
+                <a href="/blog/">Blog</a> &middot;
+                <a href="/feed/feed.xml">RSS</a> &middot;
+                <a href="/imprint/">Imprint</a> &middot;
+                <a href="/privacy/">Privacy</a>
+            </p>
         </div>
     </footer>
 </body>
