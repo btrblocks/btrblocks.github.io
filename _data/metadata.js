@@ -2,5 +2,5 @@ export default {
 	title: "BtrBlocks",
 	url: "https://btrblocks.com",
 	language: "en",
-	description: "BtrBlocks is building the future cloud infrastructure.",
+	description: "Better building blocks for the cloud: storage infrastructure rebuilt for modern SSDs, fast networks, and AI-era workloads.",
 }

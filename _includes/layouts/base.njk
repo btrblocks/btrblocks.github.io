@@ -41,7 +41,11 @@
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
+			<a href="/" class="home-link">
+				{%- from 'img/logo.svg' import logo %}
+				{{ logo({ class: 'home-logo' }) }}
+				<span>{{ metadata.title }}</span>
+			</a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
@@ -63,7 +67,12 @@
 		</main>
 
 		<footer>
-			<p><a href="/feed/feed.xml">RSS Feed</a><p>
+			<p class="footer-links">
+				<a href="/">Home</a> &middot;
+				<a href="/feed/feed.xml">RSS Feed</a> &middot;
+				<a href="/imprint/">Imprint</a> &middot;
+				<a href="/privacy/">Privacy</a>
+			</p>
 			{# <p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p> #}
 		</footer>
 

@@ -1,5 +1,20 @@
 /* Defaults */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+/* JetBrains Mono, self-hosted (SIL Open Font License 1.1, see /fonts/LICENSE-JetBrainsMono.txt).
+   No request to Google Fonts is made. */
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+}
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
 	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;

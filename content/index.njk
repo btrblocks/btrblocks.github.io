@@ -10,83 +10,72 @@ eleventyNavigation:
     <div class="container hero-content">
         <h1 class="slogan">Better building blocks for the cloud</h1>
         <p class="description">
-
-          BtrBlocks is building foundational cloud-independent infrastructure
-          services so you don't have to.
-
-          No more legacy tech, no more lock-in.
+          Cloud storage, rebuilt for modern SSDs, fast networks, and AI-era workloads.
         </p>
         {% include "subscribe.njk" %}
     </div>
 </section>
 
-
-{#
-<section class="container">
-    <div class="principles">
-        <div class="principle-box">
-            <h3>Cloud-Independent</h3>
-            <p>
-              Infrastructure services should work seamlessly across all cloud providers.
-            </p>
-        </div>
-
-        <div class="principle-box">
-            <h3>Cloud-Native</h3>
-            <p>
-              Built for distributed systems from the ground up.
-              Embraces containerization,
-              microservices architecture,
-              and dynamic orchestration without the complexity.
-            </p>
-        </div>
-
-        <div class="principle-box">
-            <h3>Modern Technology</h3>
-            <p>
-              Engineered with cutting-edge tech stacks to deliver significantly better performance,
-              reliability, and scalability metrics that legacy solutions can't match.
-            </p>
-        </div>
-    </div>
+<section class="narrow posts">
+    {% set numberOfLatestPostsToShow = 3 %}
+    {% include "latest-posts.njk" %}
 </section>
 
-<section class="mission">
-    <div class="container">
-        <h2>Breaking down cloud silos</h2>
-        <p>Current cloud is built on legacy tech and captured in silos. We are building foundational cloud-independent infrastructure services for cloud-native applications.</p>
-    </div>
+<section class="narrow idea">
+    <h2>Cloud storage for the AI era</h2>
+    <p>
+      Every cloud service is a distributed system, and the hardest part is managing state.
+      Compute can be restarted, replicated, and scaled at will.
+      State must survive failures, stay consistent, and be fast, elastic, and cheap at the same time.
+      Every database, data platform, and AI service faces this problem, and today each one solves it on its own.
+    </p>
+    <p>
+      BtrBlocks solves it once.
+      We build the storage building blocks these services share:
+      durable, replicated storage that is as cheap as object storage and as fast as block storage,
+      low-latency durable writes,
+      and snapshots that make branching and rolling back state cheap.
+      They run on commodity servers with SSDs, in any cloud or data center.
+    </p>
+    <p>
+      BtrBlocks is a spin-off of a decade of storage research at the Technical University of Munich (TUM).
+    </p>
 </section>
-#}
 
-{#
-<!-- Old home page listing blog posts for reference -->
----js
-const eleventyNavigation = {
-  key: "Home",
-  hide: true,
-  order: 1
-};
-
-const numberOfLatestPostsToShow = 3;
----
-
-<h1>BtrBlocks</h1>
-Building a cloud infrastructure for the future. Coming soon.
-
-
-{% set postsCount = collections.posts | length %}
-{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-{% if latestPostsCount > 0 %}
-    <h2>Latest Posts</h2>
-
-  {% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
-  {% set postslistCounter = postsCount %}
-  {% include "postslist.njk" %}
-
-  {% set morePosts = postsCount - numberOfLatestPostsToShow %}
-  {% if morePosts > 0 %}
-  <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found <a href="blog.njk">here</a>.</p>
-  {% endif %}
-{% endif %}
-#}
+<section class="narrow team">
+    <h2>Team</h2>
+    <ul class="team-list">
+        <li>
+            <img class="team-photo" src="team/haas.jpg" alt="Gabriel Haas" width="96" height="96" eleventy:widths="192">
+            <div>
+                <span class="team-name">Gabriel Haas</span>
+                <span class="team-role">CEO</span>
+                <p>Postdoc at TUM, PhD on data systems for fast NVMe storage.</p>
+            </div>
+        </li>
+        <li>
+            <img class="team-photo" src="team/leis.jpg" alt="Viktor Leis" width="96" height="96" eleventy:widths="192">
+            <div>
+                <span class="team-name">Viktor Leis</span>
+                <span class="team-role">CTO</span>
+                <p>Professor at TUM, heads the Chair for Decentralized Information Systems and Data Management.</p>
+            </div>
+        </li>
+        <li>
+            <img class="team-photo" src="team/giceva.jpg" alt="Jana Giceva" width="96" height="96" eleventy:widths="192">
+            <div>
+                <span class="team-name">Jana Giceva</span>
+                <span class="team-role">CSO</span>
+                <p>Professor at TUM, research on data systems for modern and future hardware.</p>
+            </div>
+        </li>
+        <li>
+            <img class="team-photo" src="team/el-hindi.jpg" alt="Muhammad El-Hindi" width="96" height="96" eleventy:widths="192">
+            <div>
+                <span class="team-name">Muhammad El-Hindi</span>
+                <span class="team-role">Head of Engineering</span>
+                <p>Postdoc at TUM, research on cloud-native data systems and verified distributed protocols.</p>
+            </div>
+        </li>
+    </ul>
+</section>
