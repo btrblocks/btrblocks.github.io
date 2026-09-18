@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Tagged 'vision'</title>
-		<meta name="description" content="BtrBlocks is building the future cloud infrastructure.">
+		<meta name="description" content="Better building blocks for the cloud: storage infrastructure rebuilt for modern SSDs, fast networks, and AI-era workloads.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="BtrBlocks">
 		
 		
@@ -126,7 +126,22 @@ article.blog-content {
 	align-self: center;
 }
 /* Defaults */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+/* JetBrains Mono, self-hosted (SIL Open Font License 1.1, see /fonts/LICENSE-JetBrainsMono.txt).
+   No request to Google Fonts is made. */
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+}
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
 	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;
@@ -357,9 +372,18 @@ header:after, main:after {
 }
 
 .home-link {
-    font-size: 1em; /* 16px /16 */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-family-monospace);
+    font-size: 1.1em;
     font-weight: 700;
     margin-right: 2em;
+}
+
+.home-logo {
+    height: 1.5em;
+    width: auto;
 }
 
 .home-link:link:not(:hover) {
@@ -382,13 +406,31 @@ header:after, main:after {
 }
 .nav a[href][aria-current="page"] {
     text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    padding: 0.5em 0 2.5em 0;
 }</style>
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">BtrBlocks</a>
+			<a href="/" class="home-link">
+				<svg width="100%" height="100%" class="home-logo" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>btrblocksblack</title>
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-664,-42)">
+    <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5" />
+    <rect fill="#01a0ac" x="664" y="292" width="225" height="100" rx="5" />
+    <rect fill="#02b353" x="789" y="167" width="225" height="100" rx="5" />
+    <rect fill="#bd206e" x="914" y="42" width="100" height="100" rx="5" />
+    <rect fill="#e53636" x="789" y="42" width="100" height="100" rx="5" />
+    <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5" />
+  </g>
+</svg>
+				<span>BtrBlocks</span>
+			</a>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
@@ -417,11 +459,11 @@ header:after, main:after {
 <ol reversed class="postlist">
 	<li class="postlist-item">
 		<a href="/blog/s3_is_the_future_and_the_past/" class="postlist-link">S3 Is the Future, S3 Is the Past</a>
-		<time class="postlist-date" datetime="2026-06-23">June 2026</time>
+		<time class="postlist-date" datetime="2026-09-18">September 2026</time>
 	</li>
 	<li class="postlist-item">
 		<a href="/blog/our_future_in_the_cloud/" class="postlist-link">Our Future in the Cloud: Can We Prevent Technological Dystopia?</a>
-		<time class="postlist-date" datetime="2026-06-23">June 2026</time>
+		<time class="postlist-date" datetime="2026-09-18">September 2026</time>
 	</li>
 </ol>
 
@@ -433,11 +475,16 @@ header:after, main:after {
 		</main>
 
 		<footer>
-			<p><a href="/feed/feed.xml">RSS Feed</a></p><p>
+			<p class="footer-links">
+				<a href="/">Home</a> ·
+				<a href="/feed/feed.xml">RSS Feed</a> ·
+				<a href="/imprint/">Imprint</a> ·
+				<a href="/privacy/">Privacy</a>
+			</p>
 			
-		</p></footer>
+		</footer>
 
-		<!-- This page `/tags/vision/` was built on 2026-06-23T10:23:31.582Z -->
+		<!-- This page `/tags/vision/` was built on 2026-09-18T10:04:32.228Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
