@@ -2,6 +2,7 @@
 title: "S3 Is the Future, S3 Is the Past"
 author: ["Viktor Leis"]
 tags: [vision, cloud]
+date: 2026-06-23
 ---
 Amazon S3, and its analogues in other clouds, have become the foundation of the modern cloud software architecture. Today, nearly every data-intensive system is being built around S3. However, the hardware assumptions baked into S3's design -- and into all the software architectures that have emerged around it -- are rapidly becoming obsolete.
 

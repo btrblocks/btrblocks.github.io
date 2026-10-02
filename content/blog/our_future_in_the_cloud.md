@@ -2,6 +2,7 @@
 title: "Our Future in the Cloud: Can We Prevent Technological Dystopia?"
 author: ["Viktor Leis", "Muhammad El-Hindi"]
 tags: [vision, cloud]
+date: 2025-12-30
 ---
 
 The promise of the cloud is computing as a utility: like electricity from a power socket, the cloud promises computing infrastructure that "just works". The massive scale of the public cloud hyperscalers (AWS, Azure, and Google Cloud) should also yield economies of scale, theoretically translating to lower costs for customers. Cloud adoption has been massive, and even more organizations are moving to the cloud as fast as they can. One consequence of this trend is that public cloud hyperscalers have obtained a large share of the server hardware market.
