@@ -32,28 +32,22 @@ You can subscribe to our e-mail updates by entering your e-mail address in the s
 
 The legal basis is your consent (Art. 6 (1) (a) GDPR). You can withdraw your consent at any time with effect for the future by using the unsubscribe link contained in every e-mail or by contacting us; your address is then deleted from the subscriber list. Buttondown's privacy policy is available at [buttondown.com/legal/privacy](https://buttondown.com/legal/privacy).
 
-## 5. Blog comments
-
-Blog posts embed a comment section powered by [utterances](https://utteranc.es/), an open-source widget that stores comments as issues in a public GitHub repository. When you open a blog post, your browser loads the widget from utteranc.es and queries the GitHub API to display existing comments, which transmits your IP address to these services. To write a comment, you must sign in with your GitHub account and authorize the utterances app; your comment is then published under your GitHub username in the public repository and is subject to GitHub's privacy statement and terms. After signing in, utterances stores an access token in your browser's local storage so that you remain signed in.
-
-The legal basis for displaying comments is our legitimate interest in offering a discussion of our posts (Art. 6 (1) (f) GDPR); for publishing your comment and storing the token it is your consent, given by signing in (Art. 6 (1) (a) GDPR). GitHub's Data Privacy Framework certification (see section 2) covers the transfer to the USA. You can delete your comments at any time through GitHub, and you can remove the stored token by clearing your browser's site data.
-
-## 6. Contact by e-mail
+## 5. Contact by e-mail
 
 If you contact us by e-mail, we store your message and the data you provide in order to handle your request and any follow-up questions. The legal basis is Art. 6 (1) (b) GDPR where the request relates to a contract, and otherwise our legitimate interest in answering your request (Art. 6 (1) (f) GDPR). We delete the data when the request is settled, unless statutory retention obligations apply.
 
-## 7. External links
+## 6. External links
 
 This website contains links to external websites. We have no influence on the data processing of their operators; the privacy policies of the respective operators apply.
 
-## 8. Your rights
+## 7. Your rights
 
 Under the GDPR you have the right to obtain information about the personal data we store about you (Art. 15), to have it rectified (Art. 16) or erased (Art. 17), to restrict its processing (Art. 18), to receive it in a portable format (Art. 20), and to object to processing based on our legitimate interests (Art. 21). Where processing is based on your consent, you may withdraw that consent at any time with effect for the future (Art. 7 (3)). To exercise these rights, contact us at the address given above.
 
 You also have the right to lodge a complaint with a data protection supervisory authority. The authority responsible for us is the Bayerisches Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach, Germany, [www.lda.bayern.de](https://www.lda.bayern.de/).
 
-## 9. Changes
+## 8. Changes
 
 We will update this privacy policy when the website or the legal requirements change. The current version is always available on this page.
 
-Last updated: 17 September 2026
+Last updated: 2 October 2026
