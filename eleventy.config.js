@@ -110,6 +110,8 @@ export default async function(eleventyConfig) {
   });
   // footnotes in markdown
   markdownLib.use(footnotePlugin);
+  // linkify-it v6 (markdown-it 15) disabled fuzzy links by default; keep auto-linking bare domains like example.com
+  markdownLib.linkify.set({ fuzzyLink: true });
   eleventyConfig.setLibrary("md", markdownLib);
 
 	// Filters

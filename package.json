@@ -6,15 +6,15 @@
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.6",
 		"@11ty/eleventy-img": "^7.0.0",
-		"@11ty/eleventy-navigation": "^0.3.5",
-		"@11ty/eleventy-plugin-rss": "^2.0.2",
+		"@11ty/eleventy-navigation": "^1.0.5",
+		"@11ty/eleventy-plugin-rss": "^3.1.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@sardine/eleventy-plugin-external-links": "^1.4.0",
-		"cross-env": "^7.0.3",
+		"cross-env": "^10.1.0",
 		"luxon": "^3.5.0",
-		"markdown-it": "^14.1.0",
-		"zod": "^3.23.8",
-		"zod-validation-error": "^3.3.1"
+		"markdown-it": "^15.0.2",
+		"zod": "^4.6.5",
+		"zod-validation-error": "^5.0.0"
 	},
 	"dependencies": {
 		"@zachleat/heading-anchors": "^1.0.1",
