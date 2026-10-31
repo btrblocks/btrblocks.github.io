@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Logging as a Service: The Missing Cloud Primitive</title>
+		<meta name="description" content="Better building blocks for the cloud: storage infrastructure rebuilt for modern SSDs, fast networks, and AI-era workloads.">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="BtrBlocks">
+		
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+body {
+   max-width: 40em;
+}
+
+article.blog-content {
+	/* TODO left-align instead? */
+	text-align: justify;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+/* Tags list */
+.post-metadata, .post-taglist {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-color-faded);
+}
+
+.post-metadata {
+   margin-bottom: 1em;
+}
+
+.post-metadata li + li:before {
+    content: "•";
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.post-taglist {
+    margin-top: 1em;
+}
+
+.links-nextprev {
+    display: flex;
+    justify-content: space-between;
+    gap: .5em 1em;
+    list-style: "";
+    border-top: 1px dashed var(--color-gray-20);
+    padding: 1em 0 0 0;
+}
+.links-nextprev > * {
+    flex-grow: 1;
+}
+.links-nextprev-next {
+    text-align: right;
+}
+
+.links-viewall {
+	display: flex;
+	justify-content: center;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* Defaults */
+/* JetBrains Mono, self-hosted (SIL Open Font License 1.1, see /fonts/LICENSE-JetBrainsMono.txt).
+   No request to Google Fonts is made. */
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+}
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: "JetBrains Mono", Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, monospace;
+}
+
+/* Theme colors */
+:root {
+    --btr-orange: #fb9c1f;
+	--btr-red: #e53636;
+	--btr-purple: #bd206e;
+	--btr-green: #02b353;
+	--btr-cyan: #01a0ac;
+	--btr-blue: #008fc9;
+
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+	--background-color-secondary: #f6f6f6;
+	--separator-color: var(--color-gray-50);
+
+	--text-color: #000;
+	--text-color-faded: #64748b;
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--primary: var(--btr-blue);
+	--secondary: var(--btr-cyan);
+	--accent: var(--btr-orange);
+	--accent-gradient: linear-gradient(125deg, var(--btr-blue) 0%, var(--btr-cyan) 33%, var(--btr-green) 66%, var(--btr-orange) 100%);
+
+	--accent-gradient-infinite: linear-gradient(125deg,
+												var(--btr-blue),
+												var(--btr-cyan),
+												var(--btr-green),
+												var(--btr-orange),
+												var(--btr-purple),
+												var(--btr-cyan),
+												var(--btr-blue),
+												var(--btr-green)
+);
+
+	--large-dropshadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #494949;
+
+		--background-color: #151515;
+		--background-color-secondary: #0a1505;
+		--separator-color: var(--color-gray-90);
+
+		/* --text-color is assigned to --color-gray-_ above */
+	    --text-color: #fff;
+	    --text-color-faded: var(--color-gray-50);
+		--text-color-link: var(--text-color);
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: var(--color-gray-50);
+
+		--large-dropshadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	font-family: var(--default-font);
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-monospace);
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+/* Keep long URLs in footnotes from overflowing */
+.footnotes a {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	/*border-top: 1px dashed var(--color-gray-20);*/
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+@media screen and (min-width: 1536px) {
+  :root {font-size: 110%;}
+}
+
+@media screen and (max-width: 768px) {
+  :root {font-size: 90%;}
+}
+
+@media screen and (max-width: 384px) {
+  :root {font-size: 70%;}
+}
+
+@media screen and (max-width: 250px) {
+  :root {font-size: 50%;}
+}
+main, header {
+    border-bottom: 1px dashed var(--separator-color);
+    margin-bottom: 1em;
+}
+/* Header */
+header {
+    display: flex;
+    gap: 1em .5em;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1em;
+}
+
+header:after, main:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-family-monospace);
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-right: 2em;
+}
+
+.home-logo {
+    height: 1.5em;
+    width: auto;
+}
+
+.home-link:link:not(:hover) {
+    text-decoration: none;
+}
+
+/* Nav */
+.nav {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.nav-item {
+    display: inline-block;
+    margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+    text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    padding: 0.5em 0 2.5em 0;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">
+				<svg width="100%" height="100%" class="home-logo" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>btrblocksblack</title>
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-664,-42)">
+    <rect fill="#008fc9" x="914" y="292" width="100" height="100" rx="5" />
+    <rect fill="#01a0ac" x="664" y="292" width="225" height="100" rx="5" />
+    <rect fill="#02b353" x="789" y="167" width="225" height="100" rx="5" />
+    <rect fill="#bd206e" x="914" y="42" width="100" height="100" rx="5" />
+    <rect fill="#e53636" x="789" y="42" width="100" height="100" rx="5" />
+    <rect fill="#fb9c1f" x="664" y="42" width="100" height="225" rx="5" />
+  </g>
+</svg>
+				<span>BtrBlocks</span>
+			</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					
+						<li class="nav-item"><a href="/">Home</a></li>
+					
+					
+						<li class="nav-item"><a href="/blog/">Blog</a></li>
+					
+					
+						<li class="nav-item"><a href="/tags/">Tags</a></li>
+					
+					
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+
+<h1 id="logging-as-a-service-the-missing-cloud-primitive">Logging as a Service: The Missing Cloud Primitive</h1>
+<ul class="post-metadata">
+	<li><time datetime="2026-10-31">31 October 2026</time></li>
+    
+      <li><span class="authorlist">Muhammad El-Hindi</span></li>
+    
+</ul>
+
+<article class="blog-content">
+<p>Database systems use write-ahead logging (WAL) to ensure durability: before a transaction commits, its log records must be persisted. On-premise databases can write their logs to local SSDs, achieving durable commits with very low latency. In the cloud, however, instance-local disks are ephemeral and may disappear when a machine fails<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Cloud databases, therefore, need a durable remote logging backend. Surprisingly, none of the standard cloud storage services is well-suited for this task.</p>
+<p>S3 offers excellent durability and low storage cost, but as discussed in <a href="/blog/s3_is_the_future_and_the_past/">a previous post</a>, it is essentially a million hard disks behind an HTTP API: a write takes tens of milliseconds, and write costs are high. Even S3 Express One Zone has multi-millisecond latency. Since every commit waits for the log, putting your WAL on S3 forces your OLTP system to become a batch system.</p>
+<p>Remote block storage such as Amazon EBS is the traditional alternative, but it is much slower than the hardware it runs on. We compared the write latency of the hyperscalers’ block storage to a network round trip plus a local SSD write, the physical lower bound for a durable remote write:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">AWS</th>
+<th style="text-align:right">GCP</th>
+<th style="text-align:right">Azure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Network + local SSD</td>
+<td style="text-align:right">76 µs</td>
+<td style="text-align:right">71 µs</td>
+<td style="text-align:right">301 µs</td>
+</tr>
+<tr>
+<td style="text-align:right">Remote block storage</td>
+<td style="text-align:right">311 µs</td>
+<td style="text-align:right">453 µs</td>
+<td style="text-align:right">776 µs</td>
+</tr>
+<tr>
+<td style="text-align:right">Factor</td>
+<td style="text-align:right">4.1×</td>
+<td style="text-align:right">6.4×</td>
+<td style="text-align:right">2.6×</td>
+</tr>
+</tbody>
+</table>
+<p>Block storage is also expensive: EBS io2 bills for provisioned IOPS whether you use them or not, and 256,000 IOPS cost $9,651 per month. So much for the cloud’s elasticity promise.</p>
+<p>The industry has recognized this problem. Microsoft’s Socrates, Huawei’s TaurusDB, and Neon built specialized logging backends, and AWS has an internal “Journal” service that powers Aurora DSQL, S3, DynamoDB, Lambda, and Kinesis<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>. Yet all of them are proprietary or tied to a particular database architecture. The open-source alternative, Apache BookKeeper, by default waits up to 2 ms to group journal writes, which is reasonable for disks but long compared to the roughly 30 µs SSD writes we measured on AWS instances. Which raises the question: why is there no generally available cloud service for durable, low-latency log appends, just as there is S3 for objects?</p>
+<p>In our recent BtrLog paper<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, we investigate what such a service could look like. The interface is simple: append records, make them durable, and read them back during recovery. Making it durable, cost-efficient, and fast is the hard part. General-purpose log systems assume many concurrent writers, so somebody has to decide on the order of appends. Consensus protocols such as Paxos and Raft route every append through a leader, which costs two network round trips. Shared logs, such as Corfu and Scalog, add a dedicated sequencer, also costing additional network round trips.</p>
+<p>Database logs, however, are not general-purpose. Many cloud database systems have exactly one writer per log: Aurora, Azure SQL Hyperscale, PolarDB, and AlloyDB each have a single primary writer, and in Spanner, every Paxos group has a leader. That writer already knows the order of its log records. If it assigns the log sequence numbers itself, ordering becomes free: the writer sends each record to three log nodes with NVMe SSDs in parallel and considers it durable once two of them (a write quorum) have persisted it. That is a single network round trip, and the quorum hides stragglers because the slowest node never matters. The complexity moves to failover, where a new primary must fence off the old one and figure out the correct end of the log, but that is a rare event off the critical path.</p>
+<p><img src="/blog/btrlog/12qaQRqnOH-691.svg" alt="BtrLog architecture" loading="lazy" decoding="async" width="691" height="322"></p>
+<p>Keeping the entire log on replicated SSDs would be expensive, both per append and per gigabyte. This is where S3 becomes useful. BtrLog’s log nodes only hold the active tail of the log. Once a 16 MB segment fills, it is flushed asynchronously to S3. For 1 KB log records, this reduces the S3 request cost to just $0.0003 per million appends. And because log nodes keep only the active tail, historical log data does not occupy expensive replicated SSD capacity. S3 thus does what it is actually good at: cheap, durable long-term storage with high read bandwidth for recovery. For the lowest latency, BtrLog runs three log nodes within one availability zone (AZ). For stronger availability guarantees, it distributes six log nodes across three AZs, which tolerates the loss of an entire AZ plus one more node.</p>
+<p>How close to the hardware does this get? In AWS, a network round trip within a partitioned placement group can take about 40 µs<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> and a local SSD write about 30 µs. At low load, BtrLog’s median append latency is around 70 µs: matching the measured hardware lower bound and 4× lower than EBS io2. Even with log nodes spread across three AZs, BtrLog is almost as fast as a single-AZ EBS volume. The following figure compares latency, per-append cost, and availability of all options:<br>
+<img src="/blog/btrlog/X3J4cv7mMV-691.svg" alt="Append latency vs. cost of WAL backends" loading="lazy" decoding="async" width="691" height="480"><br>
+Writing every commit directly to S3 costs about $5 per million appends, four thousand times more than BtrLog (assuming fully utilized log nodes). The large gap between local SSDs and existing remote options is not necessarily a law of nature: careful design and implementation close most of it.</p>
+<p>There is a broader opportunity for a low-latency logging backend. Logging is not specific to databases. It is used in distributed file systems and streaming systems and is an important primitive for agents<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>. Today, many systems operate their own logging infrastructure. A shared logging service could host thousands of independent logs on a common pool of log nodes (a single BtrLog node already served over 2,000 concurrently active logs in our experiments). Multi-tenancy is also economically attractive: instead of provisioning dedicated IOPS for each tenant’s peak load, as with EBS, a shared service can exploit the fact that tenants do not peak at the same time.</p>
+<p>None of the ideas behind BtrLog are radically new: quorum replication, client-driven ordering, and tiering to cheap storage are textbook techniques. What is missing is a reusable service that combines them effectively and efficiently for the cloud and modern hardware. Cloud platforms make it easy to provision virtual machines, object storage, and block devices, but applications still have to assemble something as fundamental as a durable log themselves. AWS treats logging as a fundamental primitive internally. The rest of us should too. We’ve made the <a rel="noreferrer" target="_blank" href="https://github.com/maxi-k/btrlog">BtrLog prototype and protocol specification</a> publicly available.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a rel="noreferrer" target="_blank" href="https://www.youtube.com/watch?v=huGmR_mi5dQ&t=627s">https://www.youtube.com/watch?v=huGmR_mi5dQ&amp;t=627s</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Maximilian Kuschewski, Lam-Duy Nguyen, Matthias Jasny, Tobias Ziegler, Viktor Leis, Muhammad El-Hindi: BtrLog: Low-Latency Logging for Cloud Database Systems. PVLDB 19(10), 2026. <a rel="noreferrer" target="_blank" href="https://doi.org/10.14778/3828612.3828640">https://doi.org/10.14778/3828612.3828640</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>We found that the latency can vary significantly across deployments. 40 µs is the lowest that we measured across multiple deployments. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Stay tuned for future blog posts about this. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+</article>
+
+<ul class="post-taglist">
+    <li>Tags:&nbsp;&nbsp;</li>
+	  <li><a href="/tags/storage/" class="post-tag">storage</a>, </li>
+	  <li><a href="/tags/cloud/" class="post-tag">cloud</a></li>
+</ul>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/s3_is_the_future_and_the_past/">S3 Is the Future, S3 Is the Past</a></li>
+</ul>
+
+
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p class="footer-links">
+				<a href="/">Home</a> ·
+				<a href="/feed/feed.xml">RSS Feed</a> ·
+				<a href="/imprint/">Imprint</a> ·
+				<a href="/privacy/">Privacy</a>
+			</p>
+			
+		</footer>
+
+		<!-- This page `/blog/btrlog/` was built on 2026-10-31T15:25:47.173Z -->
+		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
+	</body>
+</html>

@@ -6,11 +6,77 @@
   <subtitle>Better building blocks for the cloud: storage infrastructure rebuilt for modern SSDs, fast networks, and AI-era workloads.</subtitle>
   <link href="https://btrblocks.com/feed/feed.xml" rel="self" />
   <link href="https://btrblocks.com/" />
-  <updated>2026-06-23T00:00:00Z</updated>
+  <updated>2026-10-31T00:00:00Z</updated>
   <id>https://btrblocks.com/</id>
   <author>
     <name>BtrBlocks Team</name>
   </author>
+  <entry>
+    <title>Logging as a Service: The Missing Cloud Primitive</title>
+    <link href="https://btrblocks.com/blog/btrlog/" />
+    <updated>2026-10-31T00:00:00Z</updated>
+    <id>https://btrblocks.com/blog/btrlog/</id>
+    <content type="html">&lt;p&gt;Database systems use write-ahead logging (WAL) to ensure durability: before a transaction commits, its log records must be persisted. On-premise databases can write their logs to local SSDs, achieving durable commits with very low latency. In the cloud, however, instance-local disks are ephemeral and may disappear when a machine fails&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;. Cloud databases, therefore, need a durable remote logging backend. Surprisingly, none of the standard cloud storage services is well-suited for this task.&lt;/p&gt;
+&lt;p&gt;S3 offers excellent durability and low storage cost, but as discussed in &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/s3_is_the_future_and_the_past/&quot;&gt;a previous post&lt;/a&gt;, it is essentially a million hard disks behind an HTTP API: a write takes tens of milliseconds, and write costs are high. Even S3 Express One Zone has multi-millisecond latency. Since every commit waits for the log, putting your WAL on S3 forces your OLTP system to become a batch system.&lt;/p&gt;
+&lt;p&gt;Remote block storage such as Amazon EBS is the traditional alternative, but it is much slower than the hardware it runs on. We compared the write latency of the hyperscalers’ block storage to a network round trip plus a local SSD write, the physical lower bound for a durable remote write:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;AWS&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;GCP&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;Azure&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;Network + local SSD&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;76 µs&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;71 µs&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;301 µs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;Remote block storage&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;311 µs&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;453 µs&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;776 µs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;Factor&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;4.1×&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;6.4×&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;2.6×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Block storage is also expensive: EBS io2 bills for provisioned IOPS whether you use them or not, and 256,000 IOPS cost $9,651 per month. So much for the cloud’s elasticity promise.&lt;/p&gt;
+&lt;p&gt;The industry has recognized this problem. Microsoft’s Socrates, Huawei’s TaurusDB, and Neon built specialized logging backends, and AWS has an internal “Journal” service that powers Aurora DSQL, S3, DynamoDB, Lambda, and Kinesis&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fn2&quot; id=&quot;fnref2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;. Yet all of them are proprietary or tied to a particular database architecture. The open-source alternative, Apache BookKeeper, by default waits up to 2 ms to group journal writes, which is reasonable for disks but long compared to the roughly 30 µs SSD writes we measured on AWS instances. Which raises the question: why is there no generally available cloud service for durable, low-latency log appends, just as there is S3 for objects?&lt;/p&gt;
+&lt;p&gt;In our recent BtrLog paper&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fn3&quot; id=&quot;fnref3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt;, we investigate what such a service could look like. The interface is simple: append records, make them durable, and read them back during recovery. Making it durable, cost-efficient, and fast is the hard part. General-purpose log systems assume many concurrent writers, so somebody has to decide on the order of appends. Consensus protocols such as Paxos and Raft route every append through a leader, which costs two network round trips. Shared logs, such as Corfu and Scalog, add a dedicated sequencer, also costing additional network round trips.&lt;/p&gt;
+&lt;p&gt;Database logs, however, are not general-purpose. Many cloud database systems have exactly one writer per log: Aurora, Azure SQL Hyperscale, PolarDB, and AlloyDB each have a single primary writer, and in Spanner, every Paxos group has a leader. That writer already knows the order of its log records. If it assigns the log sequence numbers itself, ordering becomes free: the writer sends each record to three log nodes with NVMe SSDs in parallel and considers it durable once two of them (a write quorum) have persisted it. That is a single network round trip, and the quorum hides stragglers because the slowest node never matters. The complexity moves to failover, where a new primary must fence off the old one and figure out the correct end of the log, but that is a rare event off the critical path.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://btrblocks.com/blog/btrlog/12qaQRqnOH-691.svg&quot; alt=&quot;BtrLog architecture&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; width=&quot;691&quot; height=&quot;322&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Keeping the entire log on replicated SSDs would be expensive, both per append and per gigabyte. This is where S3 becomes useful. BtrLog’s log nodes only hold the active tail of the log. Once a 16 MB segment fills, it is flushed asynchronously to S3. For 1 KB log records, this reduces the S3 request cost to just $0.0003 per million appends. And because log nodes keep only the active tail, historical log data does not occupy expensive replicated SSD capacity. S3 thus does what it is actually good at: cheap, durable long-term storage with high read bandwidth for recovery. For the lowest latency, BtrLog runs three log nodes within one availability zone (AZ). For stronger availability guarantees, it distributes six log nodes across three AZs, which tolerates the loss of an entire AZ plus one more node.&lt;/p&gt;
+&lt;p&gt;How close to the hardware does this get? In AWS, a network round trip within a partitioned placement group can take about 40 µs&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fn4&quot; id=&quot;fnref4&quot;&gt;[4]&lt;/a&gt;&lt;/sup&gt; and a local SSD write about 30 µs. At low load, BtrLog’s median append latency is around 70 µs: matching the measured hardware lower bound and 4× lower than EBS io2. Even with log nodes spread across three AZs, BtrLog is almost as fast as a single-AZ EBS volume. The following figure compares latency, per-append cost, and availability of all options:&lt;br&gt;
+&lt;img src=&quot;https://btrblocks.com/blog/btrlog/X3J4cv7mMV-691.svg&quot; alt=&quot;Append latency vs. cost of WAL backends&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; width=&quot;691&quot; height=&quot;480&quot;&gt;&lt;br&gt;
+Writing every commit directly to S3 costs about $5 per million appends, four thousand times more than BtrLog (assuming fully utilized log nodes). The large gap between local SSDs and existing remote options is not necessarily a law of nature: careful design and implementation close most of it.&lt;/p&gt;
+&lt;p&gt;There is a broader opportunity for a low-latency logging backend. Logging is not specific to databases. It is used in distributed file systems and streaming systems and is an important primitive for agents&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fn5&quot; id=&quot;fnref5&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;. Today, many systems operate their own logging infrastructure. A shared logging service could host thousands of independent logs on a common pool of log nodes (a single BtrLog node already served over 2,000 concurrently active logs in our experiments). Multi-tenancy is also economically attractive: instead of provisioning dedicated IOPS for each tenant’s peak load, as with EBS, a shared service can exploit the fact that tenants do not peak at the same time.&lt;/p&gt;
+&lt;p&gt;None of the ideas behind BtrLog are radically new: quorum replication, client-driven ordering, and tiering to cheap storage are textbook techniques. What is missing is a reusable service that combines them effectively and efficiently for the cloud and modern hardware. Cloud platforms make it easy to provision virtual machines, object storage, and block devices, but applications still have to assemble something as fundamental as a durable log themselves. AWS treats logging as a fundamental primitive internally. The rest of us should too. We’ve made the &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://github.com/maxi-k/btrlog&quot;&gt;BtrLog prototype and protocol specification&lt;/a&gt; publicly available.&lt;/p&gt;
+&lt;hr class=&quot;footnotes-sep&quot;&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html&quot;&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html&lt;/a&gt; &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=huGmR_mi5dQ&amp;t=627s&quot;&gt;https://www.youtube.com/watch?v=huGmR_mi5dQ&amp;amp;t=627s&lt;/a&gt; &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn3&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Maximilian Kuschewski, Lam-Duy Nguyen, Matthias Jasny, Tobias Ziegler, Viktor Leis, Muhammad El-Hindi: BtrLog: Low-Latency Logging for Cloud Database Systems. PVLDB 19(10), 2026. &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://doi.org/10.14778/3828612.3828640&quot;&gt;https://doi.org/10.14778/3828612.3828640&lt;/a&gt; &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fnref3&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn4&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;We found that the latency can vary significantly across deployments. 40 µs is the lowest that we measured across multiple deployments. &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fnref4&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn5&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Stay tuned for future blog posts about this. &lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot; href=&quot;https://btrblocks.com/blog/btrlog/#fnref5&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+  </entry>
   <entry>
     <title>S3 Is the Future, S3 Is the Past</title>
     <link href="https://btrblocks.com/blog/s3_is_the_future_and_the_past/" />
